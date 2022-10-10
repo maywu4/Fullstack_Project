@@ -7,7 +7,7 @@ import './LoginForm.css'
 const LoginFormPage = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
-    const [email, setEmail] = useState('');
+    const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
@@ -16,7 +16,7 @@ const LoginFormPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(sessionActions.login({ email, password }))
+        return dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
                 let data;
                 try {
@@ -42,7 +42,7 @@ const LoginFormPage = () => {
                 <h4>Log in to MomentCaptur</h4>
                 <form onSubmit={ handleSubmit }>
                     <label> Email Address:
-                        <input type="text" value={ email } onChange={(e) => setEmail(e.target.value)} required />
+                        <input type="text" value={ credential } onChange={(e) => setCredential(e.target.value)} required />
                     </label>
                     <label> Password:
                         <input type="password" value={ password } onChange={(e) => setPassword(e.target.value)} required />
