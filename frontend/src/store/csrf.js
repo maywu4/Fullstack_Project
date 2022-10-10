@@ -22,10 +22,10 @@ export function storeCSRFToken(response) {
     if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
 }
 
-export async function restoreCSRF() {
-    const res = await csrfFetch("/api/session");
-    storeCSRFToken(res);
-    return res;
-}
+// export async function restoreCSRF() {
+//     const res = await csrfFetch("/api/session");
+//     storeCSRFToken(res);
+//     return res;
+// }
 
 

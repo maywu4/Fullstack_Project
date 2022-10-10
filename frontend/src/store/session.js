@@ -66,7 +66,7 @@ export const logout = () => async dispatch => {
     return res;
 };
 
-const sessionReducer = (state = { user: null }, action) => {
+const sessionReducer = (state = { user: JSON.parse(sessionStorage.getItem("currentUser")) }, action) => {
     switch (action.type) {
         case SET_CURRENT_USER:
             return { ...state, user: action.user };
