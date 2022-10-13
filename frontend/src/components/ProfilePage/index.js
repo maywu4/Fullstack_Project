@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import { Redirect } from "react-router-dom";
 import { useState } from "react";
+import EditInfoButton from "./EditInfoButton";
 import Navigation from "../Navigation";
 import profilePic from './profilePic.png';
 import './ProfilePage.css'
@@ -84,7 +85,7 @@ const ProfilePage = () => {
                 <div id="userNames">
                     <div id="coverHeading">
                         <h4> {currentUser.firstName} {currentUser.lastName}</h4>
-                        <button>...</button>
+                        <EditInfoButton />
                     </div>
                     <br />
                     <div id="userInfo">

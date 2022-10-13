@@ -1,26 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react"
 import { useSelector } from "react-redux";
 
-const ProfileMenu = () => {
+const EditInfoButton = () => {
     const [showMenu, setShowMenu] = useState(false);
     const currentUser = useSelector(state => state.session.user);
-    let profilePath = `/people/${currentUser.id}`
-
+    let profilePath = `/people/${currentUser.id}` //to be updates to settings path
     
     const openMenu = () => {
-        if(showMenu) return;
+        if (showMenu) return;
         setShowMenu(true);
     };
 
-    const linksList = (
+    const editsList = (
         <ul className="profile-dropdown" id="profileLinksList">
-            <li><button><a href={ profilePath }>About</a></button></li>
-            {/* <br /> */}
-            <li><button><a href={ profilePath }>Photostream</a></button></li>
-            {/* <br /> */}
-            <li><button><a href={ profilePath }>Faves</a></button></li>
+            <li><button><a href={profilePath}>Change cover photo</a></button></li>
+            <li><button><a href={profilePath}>Edit username</a></button></li>
+            <li><button><a href={profilePath}>Edit real name</a></button></li>
         </ul>
-    );
+    ); 
 
     useEffect(() => {
         if (!showMenu) return;
@@ -35,17 +32,13 @@ const ProfileMenu = () => {
     }, [showMenu]);
 
     return (
-        <div className="profileMenu">
+        <div className="editMenu">
             <button onClick={openMenu}>
-                <p>You</p>
+                <p>...</p>
             </button>
-            { showMenu && linksList }
+            {showMenu && editsList}
         </div>
-
     );
-
-
 };
 
-export default ProfileMenu;
-
+export default EditInfoButton;
