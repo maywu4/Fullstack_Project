@@ -1,0 +1,45 @@
+.splashPage {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./laPier.png');
+    background-size: cover;
+}
+
+
+.info {
+    color: white;
+    text-align: center;
+    padding-top: 32vh;
+}
+
+.info > h1 {
+    font-size: 56px;
+    font-weight: 400;
+}
+
+.info > h3 {
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.info button {
+    color: black;
+    background-color: white;
+    font-size: 24px;
+    width: 200px;
+    height: 64px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+}
+
+.info a:link,
+.info a:visited,
+.info a:active {
+    text-decoration: none;
+}
+
+.info button:hover {
+    color: rgb(124, 123, 123);
+    cursor: pointer;
+}

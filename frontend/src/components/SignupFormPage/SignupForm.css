@@ -1,0 +1,60 @@
+.signUpPage {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./washingtonMews.png');
+    background-size: cover;
+}
+
+.signUpForm {
+    width: 22rem;
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 24px;
+}
+
+.signUpForm h6 {
+    padding: 16px;
+    font-size: 22px;
+}
+
+.signUpForm > form > div {
+    border: darkgray;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    color: #7e7e7e;
+    padding: 7px;
+    text-align: left;
+}
+
+.signUpForm > form > div > label > input {
+    width: 90%;
+    height: 100%;
+    border-style: none;
+}
+
+.signUpForm button {
+    color: white;
+    background-color: #799fcbff;
+    font-size: 16px;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.signUpForm {
+    margin: 200px auto;
+}
+
+.loginLink a {
+    text-decoration: none;
+    color: #128fdc;
+}
+
+.error {
+    color: red;
+}

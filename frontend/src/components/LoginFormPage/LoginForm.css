@@ -1,0 +1,64 @@
+.loginPage {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./reservoir.jpg');
+    background-size: cover;
+}
+
+.loginForm {
+    width: 22rem;
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 24px;
+}
+
+.loginForm h6 {
+    padding: 16px;
+    font-size: 22px;
+}
+
+.loginForm>form>div {
+    border: darkgray;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    color: #7e7e7e;
+    padding: 7px;
+    text-align: left;
+}
+
+.loginForm>form>div>label>input {
+    width: 90%;
+    height: 100%;
+    border-style: none;
+}
+
+.loginForm button {
+    color: white;
+    font-size: 16px;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.loginForm>form>button {
+    background-color: #799fcbff;
+}
+
+.loginForm>button {
+    background-color: #c9b4edff;
+}
+
+
+.loginForm {
+    margin: 200px auto;
+}
+
+.signUpLink a {
+    text-decoration: none;
+    color: #128fdc;
+}
