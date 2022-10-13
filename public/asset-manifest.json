@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8ae9b5f7.css",
+    "main.js": "/static/js/main.c00130f9.js",
+    "static/media/laPier.png": "/static/media/laPier.dd2df9624912285fa738.png",
+    "static/media/washingtonMews.png": "/static/media/washingtonMews.95d6152f891778a40f9d.png",
+    "static/media/reservoir.jpg": "/static/media/reservoir.7c4b23999fa10311ada2.jpg",
+    "static/media/profilePic.png": "/static/media/profilePic.6369c6d92177c225b970.png",
+    "static/media/brooklynBridge.png": "/static/media/brooklynBridge.7540b1228bf08a230293.png",
+    "static/media/logo.png": "/static/media/logo.bf9958acc0b0e8ba3b17.png",
+    "index.html": "/index.html",
+    "main.8ae9b5f7.css.map": "/static/css/main.8ae9b5f7.css.map",
+    "main.c00130f9.js.map": "/static/js/main.c00130f9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8ae9b5f7.css",
+    "static/js/main.c00130f9.js"
+  ]
+}
