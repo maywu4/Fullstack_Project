@@ -4,7 +4,7 @@ import Navigation from "../Navigation";
 
 const HomePage = () => {
     const currentUser = useSelector(state => state.session.user);
-    if (!currentUser) return <Redirect to="/" />;
+    if (!currentUser) return <Redirect exact to="/" />;
 
     return (
         <div className="homePage">

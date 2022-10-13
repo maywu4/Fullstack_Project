@@ -1,11 +1,15 @@
 import Navigation from "../Navigation"
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 // import bostonImg from './boston.png'
 // import laPier from './laPier.png'
 // import sunset from './sunset.png'
 import './SplashPage.css'
 
 const SplashPage = () => {
+    const currentUser = useSelector(state => state.session.user);
 
+    if (currentUser) return <Redirect to="/homepage" />;
 
     // slideShow - source:  w3schools(https://www.w3schools.com/w3css/w3css_slideshow.asp)
     // let idx = 0;
