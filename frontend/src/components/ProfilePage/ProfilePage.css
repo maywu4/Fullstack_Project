@@ -1,9 +1,8 @@
 .userCover {
-    background-color: aqua;
     background-image: url('./brooklynBridge.png');
     background-size: cover;
     background-position: center;
-    width: 100vw;
+    width: auto;
     height: 25vh;
     display: flex;
     justify-content: left;
@@ -22,7 +21,7 @@
 }
 
 .userCover h4,
-.userCover h6 {
+.userCover li {
     padding-left: 1rem;
 }
 
@@ -41,10 +40,31 @@
     border-radius: 50px;
 }
 
+#coverHeading {
+    display: flex;
+}
+#coverHeading button {
+    margin-left: 30px; 
+    background-color:rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 4px;
+    color: white;
+    font-weight: 600;
+    width: 3rem;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#coverHeading button:hover {
+    background-color: white;
+    color: black;
+}
+
+
 .selectionMenu {
     height: auto;
     /* background-color: aqua; */
-    width: 100%;
+    width: auto;
     padding: .75rem;
     border: darkgrey;
     border-style: solid;
@@ -68,4 +88,62 @@
     transition: all 0.7s;
     border-bottom-left-radius: 2rem;
     border-top-left-radius: 2rem;
+    color: grey;
+}
+
+#userNames {
+    width: 100%;
+}
+
+#userInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.selectionTabs li:hover,
+.selectionTabs li:active {
+    border-bottom: 3px #c9b4edff;
+    border-style: solid;
+    border-radius: 0;
+}
+
+.selectionTabs li:active {
+    color: black;
+}
+
+.menuSelection {
+    width: auto;
+    height: 50vh;
+    background-color:#f3f5f6;
+    display: flex;
+    justify-content: center;
+}
+
+
+.selections > ul {
+    display: grid;
+}
+
+#aboutSelection {
+    border: grey solid 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 35px;
+    width: 70%;
+    background-color: white;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+#aboutSelection > textarea, 
+#aboutSelection > h4 {
+    margin: 20px;
+}
+
+#aboutSelection>textarea {
+    width: 90%;
+    height: 40%;
 }
