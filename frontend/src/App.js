@@ -13,7 +13,7 @@ export default function App() {
   const currentUser = useSelector(state => state.session.user);
   
   const userProfile = () => {
-    let profilePath = `/people/${currentUser.id}`;
+    let profilePath = '/people/:userId';
      return (
       <Route path={profilePath}>
         <ProfilePage />

@@ -6,7 +6,7 @@ import userReducer from './user';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
-    user: userReducer
+    users: userReducer
 });
 
 let enhancer;
