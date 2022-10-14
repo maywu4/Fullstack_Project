@@ -10839,3 +10839,1441 @@ Processing by StaticPagesController#frontend_index as */*
 Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 286)
 
 
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 12:14:01 -0400
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 12:14:01 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+Processing by Api::SessionsController#show as JSON
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 1.6ms | Allocations: 15)
+Completed 200 OK in 31ms (Views: 25.9ms | ActiveRecord: 0.0ms | Allocations: 5218)
+
+
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 52ms (Views: 1.0ms | ActiveRecord: 18.9ms | Allocations: 8899)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 12:14:13 -0400
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 12:14:13 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.6ms | Allocations: 84)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 698)
+
+
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 26ms (Views: 0.6ms | ActiveRecord: 5.7ms | Allocations: 1106)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 12:14:16 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1131)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 12:14:16 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 7)
+Completed 200 OK in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 288)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-14 12:14:17 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"helloWord@user.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"helloWord@user.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "helloWord@user.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:37:in `find_by_credentials'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:61:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:51:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Testing-123"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "helloWord@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `reset_session_token!'
+  [1m[36mUser Update (1.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-14 16:14:18.265422"], ["id", 1]]
+  ↳ app/models/user.rb:51:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:51:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 1.1ms | Allocations: 577)
+Completed 200 OK in 466ms (Views: 4.7ms | ActiveRecord: 15.2ms | Allocations: 21589)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 12:14:18 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 7)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 342)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 12:14:20 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-14 13:03:33 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:61:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:51:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Testing-123"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "helloWord@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51:in `reset_session_token!'
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-14 17:03:33.447186"], ["id", 1]]
+  ↳ app/models/user.rb:51:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:51:in `reset_session_token!'
+Completed 200 OK in 592ms (Views: 0.4ms | ActiveRecord: 61.1ms | Allocations: 9124)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 13:03:39 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 13:03:39 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (22.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 25ms (Views: 0.1ms | ActiveRecord: 22.1ms | Allocations: 1144)
+
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 1.6ms | Allocations: 6)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 287)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8044613453116649850)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateActiveStorageTables (20221014175420)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (20.3ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221014175420"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8044613453116649850)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Testing-123"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "helloWord@user.io"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (2.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (2.9ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "n6bhfyzptapym2ttuc9lm2e8nw3x"], ["filename", "vineyard.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "amazon_dev"], ["byte_size", 3070860], ["checksum", "tWhqmlYtYv6YrG4qjYFNiQ=="], ["created_at", "2022-10-14 18:54:41.536188"]]
+  [1m[36mActiveStorage::Attachment Create (1.9ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "photo"], ["record_type", "User"], ["record_id", 1], ["blob_id", 1], ["created_at", "2022-10-14 18:54:41.540535"]]
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2022-10-14 18:54:41.543332"], ["id", 1]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+[36m  S3 Storage (783.1ms) [0m[32mUploaded file to key: n6bhfyzptapym2ttuc9lm2e8nw3x (checksum: tWhqmlYtYv6YrG4qjYFNiQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 0f1673fc-fd9e-4964-908e-f400a73fa59e) to Async(default) with arguments: #<GlobalID:0x000000010abce098 @uri=#<URI::GID gid://moment-captur/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f1673fc-fd9e-4964-908e-f400a73fa59e]   [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f1673fc-fd9e-4964-908e-f400a73fa59e] Performing ActiveStorage::AnalyzeJob (Job ID: 0f1673fc-fd9e-4964-908e-f400a73fa59e) from Async(default) enqueued at 2022-10-14T18:54:42Z with arguments: #<GlobalID:0x000000010ac3fab8 @uri=#<URI::GID gid://moment-captur/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f1673fc-fd9e-4964-908e-f400a73fa59e] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f1673fc-fd9e-4964-908e-f400a73fa59e]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f1673fc-fd9e-4964-908e-f400a73fa59e]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f1673fc-fd9e-4964-908e-f400a73fa59e]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [0f1673fc-fd9e-4964-908e-f400a73fa59e] Performed ActiveStorage::AnalyzeJob (Job ID: 0f1673fc-fd9e-4964-908e-f400a73fa59e) from Async(default) in 191.1ms
+Started GET "/favicon.ico" for ::1 at 2022-10-14 14:58:56 -0400
+Started GET "/api/session" for ::1 at 2022-10-14 14:58:57 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.2ms | Allocations: 10)
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 807)
+
+
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 14ms (Views: 0.1ms | ActiveRecord: 3.9ms | Allocations: 4426)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 14:59:06 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 14:59:06 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 12ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1287)
+
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.2ms | Allocations: 10)
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 634)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-14 14:59:07 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"helloWord@user.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"helloWord@user.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "helloWord@user.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39:in `find_by_credentials'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:63:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Testing-123"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "helloWord@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-14 18:59:07.797251"], ["id", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 396)
+Completed 200 OK in 307ms (Views: 1.2ms | ActiveRecord: 7.1ms | Allocations: 9969)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 14:59:07 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.0ms | Allocations: 7)
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 327)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 14:59:09 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/session" for ::1 at 2022-10-14 15:14:47 -0400
+Started GET "/favicon.ico" for ::1 at 2022-10-14 15:14:47 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#frontend_index as */*
+Processing by Api::SessionsController#show as JSON
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.3ms | Allocations: 15)
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 2609)
+
+
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (194.7ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T191447Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=17ff97de262559cecaca4490a76b1ca096791ca386e0de3486ea59191ff967d5)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 235.9ms | Allocations: 313292)
+Completed 200 OK in 272ms (Views: 227.7ms | ActiveRecord: 21.6ms | Allocations: 332917)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-10-14 15:14:57 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 8)
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 348)
+
+
+Started GET "/api/users/1" for ::1 at 2022-10-14 15:15:57 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (2.3ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T191557Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=d6bd2d9ec25f82089b372194adc1ddf78d18adb62ccc60bcff3c8c14394bab78)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 7.0ms | Allocations: 3268)
+Completed 200 OK in 19ms (Views: 7.7ms | ActiveRecord: 1.3ms | Allocations: 5606)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-10-14 15:15:57 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.4ms | Allocations: 7)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 327)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-14 15:19:42 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:63:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Testing-123"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "helloWord@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-14 19:19:42.311927"], ["id", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 4.8ms | Allocations: 7638)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 15:19:45 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 15:19:45 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1058)
+
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.4ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 15:19:49 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 15:19:49 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1107)
+
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 15:19:50 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1008)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 15:19:50 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 15:41:34 -0400
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 15:41:34 -0400
+Processing by Api::SessionsController#show as JSON
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.3ms | Allocations: 7)
+Completed 200 OK in 4ms (Views: 2.8ms | Allocations: 297)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 37ms (Views: 0.2ms | ActiveRecord: 9.9ms | Allocations: 4846)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-14 15:41:35 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"helloWord@user.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"helloWord@user.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "helloWord@user.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39:in `find_by_credentials'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:63:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Testing-123"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "helloWord@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-14 19:41:36.407624"], ["id", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (2.0ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T194136Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=30b23a267ad1e4a7663dd764f4564042b486523c5146583f51a4d9ff8945aa6b)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 7.7ms | Allocations: 2890)
+Completed 200 OK in 434ms (Views: 8.4ms | ActiveRecord: 4.4ms | Allocations: 8916)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 15:41:36 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 15:41:39 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.2ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:07:39 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.5ms | Allocations: 6)
+Completed 200 OK in 6ms (Views: 2.1ms | Allocations: 283)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:07:42 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.2ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.9ms | Allocations: 283)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:34:50 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.8ms | Allocations: 6)
+Completed 200 OK in 5ms (Views: 3.6ms | Allocations: 283)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:35:43 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.3ms | Allocations: 6)
+Completed 200 OK in 3ms (Views: 1.4ms | Allocations: 283)
+
+
+Started GET "/api/users/1" for ::1 at 2022-10-14 16:38:24 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (4.1ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T203824Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=05c731fa21a9b251cd3db198a8e48b781acd03b69877fd13a052b4abd9ec6d40)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 14.6ms | Allocations: 2898)
+Completed 200 OK in 73ms (Views: 16.2ms | ActiveRecord: 15.7ms | Allocations: 6742)
+
+
+Started GET "/favicon.ico" for ::1 at 2022-10-14 16:38:24 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.3ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:43:18 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 1.6ms | Allocations: 6)
+Completed 200 OK in 15ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:43:47 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.4ms | Allocations: 6)
+Completed 200 OK in 4ms (Views: 2.7ms | Allocations: 283)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:44:14 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.4ms | Allocations: 6)
+Completed 200 OK in 4ms (Views: 3.0ms | Allocations: 283)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:44:15 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.4ms | Allocations: 283)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[36m  S3 Storage (174.8ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T204436Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=b61497ca91c3bfd11a468ca27bc5170a7863105a6029a8a3432e5c70e740640b)[0m
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:44:58 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.4ms | Allocations: 6)
+Completed 200 OK in 4ms (Views: 3.1ms | Allocations: 283)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:46:36 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.3ms | Allocations: 6)
+Completed 200 OK in 2ms (Views: 1.1ms | Allocations: 283)
+
+
+  [1m[36mUser Load (8.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[36m  S3 Storage (6.8ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T204746Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=1663f1a4605702a09a4bcf1082cf2c43c28dc8149c504547f0cbc15d78aef04d)[0m
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:50:40 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.4ms | Allocations: 6)
+Completed 200 OK in 3ms (Views: 1.7ms | Allocations: 283)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:51:18 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.8ms | Allocations: 6)
+Completed 200 OK in 6ms (Views: 4.3ms | Allocations: 283)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:51:20 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 1.0ms | Allocations: 283)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-14 16:51:38 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:63:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Testing-123"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "helloWord@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Update (2.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-14 20:51:38.847707"], ["id", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+Completed 200 OK in 92ms (Views: 0.9ms | ActiveRecord: 18.3ms | Allocations: 8599)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 16:51:45 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:51:45 -0400
+Processing by Api::SessionsController#show as JSON
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  Rendered public/index.html (Duration: 0.6ms | Allocations: 438)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 884)
+
+
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.4ms | Allocations: 1606)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 16:52:09 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1196)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:52:09 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.5ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 16:52:51 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 9ms (Views: 1.0ms | ActiveRecord: 0.5ms | Allocations: 1032)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:52:51 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.5ms | Allocations: 6)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 16:52:51 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 1023)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:52:52 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-14 16:53:00 -0400
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1022)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:53:00 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-14 16:53:02 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"helloWord@user.io", "password"=>"[FILTERED]", "session"=>{"credential"=>"helloWord@user.io", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "helloWord@user.io"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:39:in `find_by_credentials'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:63:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "Testing-123"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "helloWord@user.io"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-14 20:53:03.316847"], ["id", 1]]
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:53:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (4.1ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T205303Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=f49f33075c1b2af75b01e581e2d1099ab5f0520e2b2b8d7516f15268810ab38d)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 10.3ms | Allocations: 2883)
+Completed 200 OK in 428ms (Views: 9.6ms | ActiveRecord: 3.8ms | Allocations: 8767)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:53:03 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:53:25 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.3ms | Allocations: 6)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/users/undefined" for 127.0.0.1 at 2022-10-14 16:57:37 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"undefined"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 4.8ms | Allocations: 172)
+
+ActiveRecord::RecordNotFound - Couldn't find User with 'id'=undefined:
+	app/controllers/api/users_controller.rb:16:in `show'
+
+Completed 500 Internal Server Error in 30ms (Views: 8.5ms | ActiveRecord: 0.7ms | Allocations: 2134)
+
+
+Started GET "/api/users/undefined" for 127.0.0.1 at 2022-10-14 16:57:39 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"undefined"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 96)
+
+ActiveRecord::RecordNotFound - Couldn't find User with 'id'=undefined:
+	app/controllers/api/users_controller.rb:16:in `show'
+
+Completed 500 Internal Server Error in 7ms (Views: 1.0ms | ActiveRecord: 0.5ms | Allocations: 2114)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:57:39 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.4ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:59:06 -0400
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 16:59:06 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+Processing by Api::UsersController#show as JSON
+  Rendering public/index.html
+  Parameters: {"id"=>"1"}
+  Rendered public/index.html (Duration: 4.0ms | Allocations: 396)
+Completed 200 OK in 11ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 699)
+
+
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (4.3ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T205906Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=3bff701f69a9b3bcb0c5e0fbf63ba72063ccf26e76083fe8d3b0b14432d47dc9)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 12.5ms | Allocations: 2870)
+Completed 200 OK in 26ms (Views: 16.3ms | ActiveRecord: 2.8ms | Allocations: 4179)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 16:59:24 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (2.0ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T205924Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=b25e60ffc0fb3b6f150c9bc3705b5afd2c70f90c25b99fcb074ef30dbcb0d4b5)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 6.9ms | Allocations: 2870)
+Completed 200 OK in 11ms (Views: 7.1ms | ActiveRecord: 0.7ms | Allocations: 3892)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 16:59:34 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:59:34 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendering public/index.html
+  [1m[36mActiveStorage::Blob Load (1.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (2.7ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T205934Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=8de6a3806aad60a98cc067c38f19a03fc51c0a5ebf3594f92ccd94218205cf9f)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 20.4ms | Allocations: 3842)
+Completed 200 OK in 25ms (Views: 19.0ms | ActiveRecord: 2.2ms | Allocations: 4844)
+
+
+  Rendered public/index.html (Duration: 0.8ms | Allocations: 468)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 2457)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 16:59:46 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:59:46 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 1.0ms | Allocations: 39)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 695)
+
+
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (2.5ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T205946Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=c9d7a8f3f19d65df89c5924ac43662d80ff0ddbf2f84bf8500b09dab814034dc)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 9.8ms | Allocations: 2870)
+Completed 200 OK in 18ms (Views: 9.5ms | ActiveRecord: 2.2ms | Allocations: 4186)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:59:47 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 16:59:54 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (1.1ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T205954Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=83ae3d6f3bcce9f9dca5cddc298aa3842a19a217f21e4e9d26092684a4d08108)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 8.5ms | Allocations: 3027)
+Completed 200 OK in 12ms (Views: 8.3ms | ActiveRecord: 1.1ms | Allocations: 4050)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 16:59:54 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:00:18 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:00:18 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.7ms | Allocations: 38)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms | Allocations: 321)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (2.4ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T210018Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=46192bef9b2b56823ccfce1ffe243ea1fd58c6f71f7380d9acc554d3df9e8f34)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 11.8ms | Allocations: 2870)
+Completed 200 OK in 26ms (Views: 13.2ms | ActiveRecord: 1.1ms | Allocations: 4442)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:00:38 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (6.3ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T210038Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=514bd0dc6b03c431014e8db862e98c3cae01c60b9c6b3bf848798166b3cbef4a)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 17.0ms | Allocations: 2871)
+Completed 200 OK in 31ms (Views: 17.4ms | ActiveRecord: 2.2ms | Allocations: 3868)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:00:38 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.5ms | Allocations: 6)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:00:38 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:00:44 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:00:44 -0400
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (0.8ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T210044Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=d4c0479e20e48eab975b58d5604634aa1cef3ada2ad1cf315b61ec08651275cd)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 7.8ms | Allocations: 3211)
+Completed 200 OK in 12ms (Views: 7.5ms | ActiveRecord: 1.1ms | Allocations: 4245)
+
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:01:06 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (2.6ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T210106Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=61a9999e6ee024bae5a91d7b914df2d1a7b87925b10715cee87735979a190b40)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 10.1ms | Allocations: 2937)
+Completed 200 OK in 21ms (Views: 10.5ms | ActiveRecord: 1.4ms | Allocations: 4096)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:01:06 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.2ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:01:35 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (2.3ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T210135Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=595bca288b2bcb00852b131ef1dce31e24401f919dbf52b98559572dedba9e52)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 7.5ms | Allocations: 2870)
+Completed 200 OK in 14ms (Views: 7.9ms | ActiveRecord: 0.8ms | Allocations: 3903)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:05:22 -0400
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:05:22 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered public/index.html (Duration: 3.7ms | Allocations: 512)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 1305)
+
+
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (5.2ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T210522Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=fc600688aae4a83ab99aed46901b894cc1567accfb83664651c09167699c8ff3)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 12.6ms | Allocations: 3149)
+Completed 200 OK in 23ms (Views: 15.9ms | ActiveRecord: 2.1ms | Allocations: 4710)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:06:14 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:06:14 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+Processing by Api::UsersController#show as JSON
+  Rendering public/index.html
+  Parameters: {"id"=>"1"}
+  Rendered public/index.html (Duration: 2.4ms | Allocations: 381)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 714)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (4.4ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T210614Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=a9222ab34e6383b29bb9dc5af466ed37e123740463463f1574130672ecd1f1bb)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 11.5ms | Allocations: 2870)
+Completed 200 OK in 18ms (Views: 11.6ms | ActiveRecord: 1.1ms | Allocations: 4191)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:06:39 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (1.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (3.7ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T210639Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=73da107bdfd02fdc9576a5ce5e3314e07aa9ef11eb3869e75701afd5ba1961ce)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 18.3ms | Allocations: 2870)
+Completed 200 OK in 32ms (Views: 17.4ms | ActiveRecord: 2.7ms | Allocations: 3867)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:06:45 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:06:45 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.5ms | Allocations: 6)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (2.7ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T210645Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=104a0da944cf88eac9e3c3865e5e99c62bf031949877fd55c97965ca59648895)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 8.4ms | Allocations: 2870)
+Completed 200 OK in 12ms (Views: 8.5ms | ActiveRecord: 0.8ms | Allocations: 3879)
+
+
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 17:06:57 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:06:57 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 10.8ms | Allocations: 1977)
+Completed 200 OK in 25ms (Views: 14.6ms | ActiveRecord: 0.9ms | Allocations: 3007)
+
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.3ms | Allocations: 6)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/users/3" for 127.0.0.1 at 2022-10-14 17:07:00 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 6.8ms | Allocations: 1956)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.4ms | Allocations: 2964)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:07:00 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/users/4" for 127.0.0.1 at 2022-10-14 17:07:03 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 5.4ms | Allocations: 1956)
+Completed 200 OK in 9ms (Views: 5.6ms | ActiveRecord: 0.5ms | Allocations: 2988)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:07:03 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 0ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/users/4" for 127.0.0.1 at 2022-10-14 17:08:26 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:08:26 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+Processing by StaticPagesController#frontend_index as */*
+  Rendering api/users/show.json.jbuilder
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  [1m[36mActiveStorage::Attachment Load (2.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 8.9ms | Allocations: 2189)
+  Rendered public/index.html (Duration: 4.2ms | Allocations: 1489)
+Completed 200 OK in 24ms (Views: 12.9ms | ActiveRecord: 2.8ms | Allocations: 3671)
+
+
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 1884)
+
+
+Started GET "/api/users/4" for 127.0.0.1 at 2022-10-14 17:10:23 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 6.1ms | Allocations: 1957)
+Completed 200 OK in 14ms (Views: 6.5ms | ActiveRecord: 0.7ms | Allocations: 2980)
+
+
+Started GET "/api/users/4" for 127.0.0.1 at 2022-10-14 17:10:24 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:10:24 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 5.5ms | Allocations: 1970)
+Completed 200 OK in 10ms (Views: 6.0ms | ActiveRecord: 0.7ms | Allocations: 3034)
+
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.4ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:10:27 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:10:27 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (2.6ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T211027Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=e9c056cfd5da3070caac330c1df25830666be5457b317d469c483070d3257de3)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 8.2ms | Allocations: 2918)
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 0.9ms | Allocations: 3923)
+
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:13:38 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.8ms | Allocations: 6)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 17:13:39 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 9.1ms | Allocations: 1956)
+Completed 200 OK in 16ms (Views: 9.7ms | ActiveRecord: 0.9ms | Allocations: 2973)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:13:41 -0400
+Started GET "/api/users/3" for 127.0.0.1 at 2022-10-14 17:13:41 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 12)
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 313)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 2.7ms | Allocations: 1956)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.3ms | Allocations: 2958)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:13:45 -0400
+Started GET "/api/users/4" for 127.0.0.1 at 2022-10-14 17:13:45 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 292)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 3.3ms | Allocations: 1956)
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 2958)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:13:51 -0400
+Started GET "/api/users/5" for 127.0.0.1 at 2022-10-14 17:13:51 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 10)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 305)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 2.3ms | Allocations: 1956)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 2964)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:13:54 -0400
+Started GET "/api/users/6" for 127.0.0.1 at 2022-10-14 17:13:54 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 16)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 322)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 2.2ms | Allocations: 1956)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.3ms | Allocations: 2967)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:13:57 -0400
+Started GET "/api/users/7" for 127.0.0.1 at 2022-10-14 17:13:57 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.6ms | Allocations: 14)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms | Allocations: 298)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 3.2ms | Allocations: 1957)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.4ms | Allocations: 2962)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:13:59 -0400
+Started GET "/api/users/8" for 127.0.0.1 at 2022-10-14 17:13:59 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.2ms | Allocations: 28)
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 316)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  Rendered api/users/show.json.jbuilder (Duration: 2.2ms | Allocations: 1956)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.4ms | Allocations: 2953)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:14:02 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 287)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:14:02 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (2.9ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T211402Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=9baefbbcb0d0c88f0aae271ccf9a6c45425653ca67595dbafd12ff1b2028a479)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 10.3ms | Allocations: 2872)
+Completed 200 OK in 14ms (Views: 10.0ms | ActiveRecord: 1.0ms | Allocations: 3888)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:15:53 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (3.4ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T211553Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=9bbffbf7949bbe69e1448d1d5855425ea97de7722d83a7eaa43791c3222a1bcf)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 13.2ms | Allocations: 2870)
+Completed 200 OK in 19ms (Views: 13.5ms | ActiveRecord: 0.8ms | Allocations: 3858)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:16:08 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (4.2ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T211608Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=d6616628cad3c98f204880625b7137c7207cc070eea24936ae2fc19e6d1d67e1)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 9.5ms | Allocations: 2870)
+Completed 200 OK in 17ms (Views: 9.7ms | ActiveRecord: 1.1ms | Allocations: 3888)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:26:19 -0400
+Started GET "/api/users/15" for 127.0.0.1 at 2022-10-14 17:26:19 -0400
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"15"}
+  Rendered public/index.html (Duration: 17.3ms | Allocations: 1121)
+Completed 200 OK in 21ms (Views: 19.5ms | Allocations: 1692)
+
+
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.3ms | Allocations: 96)
+
+ActiveRecord::RecordNotFound - Couldn't find User with 'id'=15:
+	app/controllers/api/users_controller.rb:16:in `show'
+
+Completed 500 Internal Server Error in 61ms (Views: 1.2ms | ActiveRecord: 21.3ms | Allocations: 5090)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:26:21 -0400
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-10-14 17:26:21 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (2.0ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T212621Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=b1de8b0aab5150218c65fe0b674a3a9ec5f0b9699d5f052fc6288a3f5347ed27)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 11.2ms | Allocations: 3374)
+Completed 200 OK in 14ms (Views: 10.0ms | ActiveRecord: 1.9ms | Allocations: 4386)
+
+
+Processing by StaticPagesController#frontend_index as */*
+  Parameters: {"path"=>"favicon"}
+  Rendering public/index.html
+  Rendered public/index.html (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 286)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2022-10-14 17:28:32 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:3
+[36m  S3 Storage (2.1ms) [0m[34mGenerated URL for file at key: n6bhfyzptapym2ttuc9lm2e8nw3x (https://momentcaptur-dev.s3.amazonaws.com/n6bhfyzptapym2ttuc9lm2e8nw3x?response-content-disposition=inline%3B%20filename%3D%22vineyard.jpg%22%3B%20filename%2A%3DUTF-8%27%27vineyard.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUSHKEWOYBPKKWPRB%2F20221014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221014T212832Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=56add1d39ac3c6055e7b0736353d44ab674162e2498262998ed0e1e756bb69b9)[0m
+  Rendered api/users/show.json.jbuilder (Duration: 7.0ms | Allocations: 2870)
+Completed 200 OK in 13ms (Views: 7.1ms | ActiveRecord: 1.0ms | Allocations: 3882)
+
+

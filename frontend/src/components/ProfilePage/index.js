@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom";
-import { useState } from "react";
-// import { useParams } from "react-router-dom";
-// import { getUser, fetchUser, updateUser } from "../../store/user";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getUser, fetchUser, updateUser } from "../../store/user";
 import littleIsland from './littleIsland.png'; 
 import EditInfoButton from "./EditInfoButton";
 import Navigation from "../Navigation";
@@ -10,22 +10,29 @@ import profilePic from './profilePic.png';
 import './ProfilePage.css'
 
 const ProfilePage = () => {
-    // const { userId } = useParams();
+    const dispatch = useDispatch();
+    const { userId } = useParams();
     // const user = userId ? useSelector(getUser(userId)) : { username:'', email: '', firstName: '', lastName: '', age: 35, password: '', about: '' }
+    const user = useSelector(getUser(userId));
     // const [firstName, setFirstName] = useState();
     // const [lastName, setLastName] = useState();
     // const [username, setUsername] = useState();
     const [about, setAbout] = useState('Write a little about yourself'); 
     const [selectTab, setSelectTab] = useState('aboutTab');
-    const currentUser = useSelector(state => state.session.user); // make this dynamic  
+    // const currentUser = useSelector(state => state.session.user); // make this dynamic  
+    // debugger;
+    useEffect(() => {
+        dispatch(fetchUser(userId));
+    }, [userId, dispatch]);
 
-    if (!currentUser) return <Redirect exact to="/" />;
+    if (!user) return null;
 
     const aboutSelection = (
         <div className="selections" id="aboutSelection">
             <textarea defaultValue={ about }></textarea>
-            <h4>Joined {currentUser.createdAt}</h4>
-            <h4>Email {currentUser.email} </h4>
+            
+            <h4>Joined {user.createdAt}</h4>
+            <h4>Email {user.email} </h4>
         </div>
     );
 
@@ -33,7 +40,7 @@ const ProfilePage = () => {
         <div className="selections" id="photostreamSelection">
             <ul>
                 {/* add user photos posted */}
-                {/* {currentUser.photos.map(photo => <li key={photo}>{photo}</li>)} */}
+                {/* {user.photos.map(photo => <li key={photo}>{photo}</li>)} */}
                 <li><img src={ littleIsland} alt="pic 1" /></li>
                 <li><img src={littleIsland} alt="pic 2" /></li>
                 <li><img src={littleIsland} alt="pic 3" /></li>
@@ -48,7 +55,7 @@ const ProfilePage = () => {
         <div className="selections" id="favesSelection">
             <ul>
                 {/* add user favorited/liked photos */}
-                {/* {currentUser.favorites.map(photo => <li key={photo}>{photo}</li>)} */}
+                {/* {user.favorites.map(photo => <li key={photo}>{photo}</li>)} */}
                 <li><img src="https://picsum.photos/206/206" alt="fave 1" /></li>
                 <li><img src="https://picsum.photos/206/206" alt="fave 2" /></li>
                 <li><img src="https://picsum.photos/206/206" alt="fave 3" /></li>
@@ -84,7 +91,6 @@ const ProfilePage = () => {
         }
     };
 
-
     return (
         <div className="userProfile">
             <Navigation />
@@ -92,19 +98,21 @@ const ProfilePage = () => {
                 <img src={ profilePic} alt="user_profile_pic" />
                 <div id="userNames">
                     <div id="coverHeading">
-                        <h4> {currentUser.firstName} {currentUser.lastName}</h4>
+                        <h4> {user.firstName} {user.lastName}</h4>
                         <EditInfoButton />
                     </div>
                     <br />
                     <div id="userInfo">
                         <ul id="userInfoLeft">
-                            <li> {currentUser.username} </li>
+                            
+                            <img src={user.picture} alt=''/>
+                            <li> {user.username} </li>
                             <li> # Followers</li>
                             <li> # Following</li>
                         </ul>
                         <ul id="userInfoRight">
                             <li> # Photos</li>
-                            <li> Joined {currentUser.createdAt.slice(0,4)}</li>
+                            <li> Joined {user.createdAt.slice(0,4)}</li>
                         </ul>
                     </div>
                 </div>

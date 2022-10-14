@@ -31,6 +31,8 @@ class User < ApplicationRecord
 
     before_validation :ensure_session_token
 
+    has_one_attached :photo
+
     def self.find_by_credentials(credential, password)
 
         if credential.match(URI::MailTo::EMAIL_REGEXP)
