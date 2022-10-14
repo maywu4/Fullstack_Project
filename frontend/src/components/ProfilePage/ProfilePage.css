@@ -121,9 +121,22 @@
     justify-content: center;
 }
 
+.selections {
+    width: 100%;
+}
 
 .selections > ul {
-    display: grid;
+    display: flex;
+    justify-content: space-around;
+    align-items: space-around;
+    flex-wrap: wrap;
+}
+
+
+.selections img {
+    width: 30vw;
+    height: 20vw;
+    padding: 2px;
 }
 
 #aboutSelection {
