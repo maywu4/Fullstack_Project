@@ -1,15 +1,23 @@
 import { useSelector } from "react-redux"
 import { Redirect } from "react-router-dom";
 import { useState } from "react";
+// import { useParams } from "react-router-dom";
+// import { getUser, fetchUser, updateUser } from "../../store/user";
+import littleIsland from './littleIsland.png'; 
 import EditInfoButton from "./EditInfoButton";
 import Navigation from "../Navigation";
 import profilePic from './profilePic.png';
 import './ProfilePage.css'
 
 const ProfilePage = () => {
+    // const { userId } = useParams();
+    // const user = userId ? useSelector(getUser(userId)) : { username:'', email: '', firstName: '', lastName: '', age: 35, password: '', about: '' }
+    // const [firstName, setFirstName] = useState();
+    // const [lastName, setLastName] = useState();
+    // const [username, setUsername] = useState();
+    const [about, setAbout] = useState('Write a little about yourself'); 
     const [selectTab, setSelectTab] = useState('aboutTab');
-    const [about, setAbout] = useState('Write a little about yourself'); // make this dynamic  
-    const currentUser = useSelector(state => state.session.user);
+    const currentUser = useSelector(state => state.session.user); // make this dynamic  
 
     if (!currentUser) return <Redirect exact to="/" />;
 
@@ -26,12 +34,12 @@ const ProfilePage = () => {
             <ul>
                 {/* add user photos posted */}
                 {/* {currentUser.photos.map(photo => <li key={photo}>{photo}</li>)} */}
-                <li>Pic 1</li>
-                <li>Pic 2</li>
-                <li>Pic 3</li>
-                <li>Pic 4</li>
-                <li>Pic 5</li>
-                <li>Pic 6</li>
+                <li><img src={ littleIsland} alt="pic 1" /></li>
+                <li><img src={littleIsland} alt="pic 2" /></li>
+                <li><img src={littleIsland} alt="pic 3" /></li>
+                <li><img src={littleIsland} alt="pic 4" /></li>
+                <li><img src={littleIsland} alt="pic 5" /></li>
+                <li><img src={littleIsland} alt="pic 6" /></li>
             </ul>
         </div>
     );
@@ -41,12 +49,12 @@ const ProfilePage = () => {
             <ul>
                 {/* add user favorited/liked photos */}
                 {/* {currentUser.favorites.map(photo => <li key={photo}>{photo}</li>)} */}
-                <li>Fave 1</li>
-                <li>Fave 2</li>
-                <li>Fave 3</li>
-                <li>Fave 4</li>
-                <li>Fave 5</li>
-                <li>Fave 6</li>
+                <li><img src="https://picsum.photos/206/206" alt="fave 1" /></li>
+                <li><img src="https://picsum.photos/206/206" alt="fave 2" /></li>
+                <li><img src="https://picsum.photos/206/206" alt="fave 3" /></li>
+                <li><img src="https://picsum.photos/206/206" alt="fave 4" /></li>
+                <li><img src="https://picsum.photos/206/206" alt="fave 5" /></li>
+                <li><img src="https://picsum.photos/206/206" alt="fave 6" /></li>
             </ul>
         </div>
     );
