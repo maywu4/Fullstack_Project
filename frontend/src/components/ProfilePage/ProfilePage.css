@@ -1,5 +1,6 @@
 .userCover {
     background-image: url('./brooklynBridge.png');
+    /* background-image: ; */
     background-size: cover;
     background-position: center;
     width: auto;

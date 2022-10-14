@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { SET_CURRENT_USER } from "./session";
 
 export const RECEIVE_USER = 'user/fetchUser';
 // export const UPDATE_CURRENT_USER = 'user/updateCurrentUser';
@@ -18,8 +19,8 @@ export const getUser = (userId) => ({users}) => (users ? users[userId] : null )
 
 export const fetchUser = (userId) => async dispatch => {
     const res = await csrfFetch(`/api/users/${userId}`);
-    const data = res.json();
-    dispatch(receiveUser(data));
+    const data = await res.json();
+    dispatch(receiveUser(data.user));
     return res;
 }
 
@@ -45,8 +46,10 @@ export const updateUser = (user) => async dispatch => {
 
 const userReducer = ( state = {}, action ) => {
     switch (action.type) {
+        case SET_CURRENT_USER:
+            if (!action.user) return state;
         case RECEIVE_USER:
-            return { ...state, user: action.user };
+            return { ...state, [action.user.id]: action.user };
         default: 
             return state; 
     }
