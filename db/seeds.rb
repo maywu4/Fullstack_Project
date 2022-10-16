@@ -23,17 +23,39 @@ ApplicationRecord.transaction do
     first_name: 'Hello',
     last_name: 'World',
     age: 31,
-    password: 'starwarsarethebestwars'
+    password: 'starwarsarethebestwars',
+    about: 'If you see something that moves you, and then snap it, you keep a moment. - Linda McCartney' 
   )
 
   User.create!(
     username: '456-Testing', 
-    email: 'internetGoodbye@user.io', 
+    email: 'internetPhotographer@user.io', 
     first_name: 'Internet',
-    last_name: 'Goodbye',
+    last_name: 'Photographer',
     age: 23,
-    password: 'asdfghjklzxcvbnm'
+    password: 'asdfghjklzxcvbnm',
+    about: 'The picture that you took with your camera is the imagination you want to create with reality. - Scott Lorenzo'
   )
+
+  User.create!(
+    username: 'maxi-maxi-maxi', 
+    email: 'maxi_maxi_maxi@user.io', 
+    first_name: 'Maxi',
+    last_name: 'Maxi',
+    age: 18,
+    password: 'qwertyuiop..'
+  )
+
+  User.create!(
+    username: 'asdfghjkl', 
+    email: 'asdfghjkl@user.io', 
+    first_name: 'ASDFG',
+    last_name: 'HJKL',
+    age: 52,
+    password: 'zxcvbnm,./12345',
+  )
+
+
 
   puts "Done!"
 end
