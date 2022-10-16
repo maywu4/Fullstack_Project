@@ -40,7 +40,8 @@ const UserButton = ({ user }) => {
 
     return (
         <div className="profileOptions">
-            <button onClick={openMenu} style={{ backgroundImage: `url("${user.picture}")` }}>
+            <button onClick={openMenu} >
+                {/* style={{ backgroundImage: `url("${user.picture}")` }} */}
                 {/* <img src={user.picture} alt='' /> */}
             </button>
             { showMenu && profileLinksList }
