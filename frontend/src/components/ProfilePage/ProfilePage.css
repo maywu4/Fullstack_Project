@@ -152,14 +152,19 @@
     border-radius: 5px;
 }
 
-#aboutSelection > textarea, 
+
 #aboutSelection > h4 {
     margin: 20px;
 }
 
-#aboutSelection>textarea {
+.editAbout {
+    margin: 20px;
+}
+
+.editAbout,
+.editAbout textarea {
     width: 90%;
-    height: 40%;
+    height: 70%;
 }
 
 #profileLinksList {

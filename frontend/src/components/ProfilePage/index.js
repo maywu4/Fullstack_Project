@@ -14,22 +14,41 @@ const ProfilePage = () => {
     const { userId } = useParams();
     // const user = userId ? useSelector(getUser(userId)) : { username:'', email: '', firstName: '', lastName: '', age: 35, password: '', about: '' }
     const user = useSelector(getUser(userId));
+    const currentUser = useSelector(state => state.session.user); // make this dynamic  
     // const [firstName, setFirstName] = useState();
     // const [lastName, setLastName] = useState();
     // const [username, setUsername] = useState();
-    const [about, setAbout] = useState('Write a little about yourself'); 
+    const [currentAbout, setCurrentAbout] = useState( currentUser.about ? currentUser.about : 'Write a little about yourself'); 
+    // const about = user.about ? user.about : 'Write a little about yourself';
     const [selectTab, setSelectTab] = useState('aboutTab');
-    const currentUser = useSelector(state => state.session.user); // make this dynamic  
     useEffect(() => {
         dispatch(fetchUser(userId));
     }, [userId, dispatch]);
 
     if (!user) return null;
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(currentAbout)
+        dispatch(updateUser(user));
+        console.log(currentUser.about);
+    }
+
+
+    const aboutSection = (
+        <form className="editAbout" onSubmit={ handleSubmit }>
+            <label> About Me
+                <br />
+                <textarea defaultValue={currentAbout} onChange={ e => setCurrentAbout(e.target.value)}></textarea>
+            </label>
+            <br />
+            <input type="submit" value="Save" />
+        </form>
+    );
+
     const aboutSelection = (
         <div className="selections" id="aboutSelection">
-            
-            {(currentUser.id === user.id ? <textarea defaultValue={about}></textarea> : user.about )}
+            {(currentUser.id === user.id ? aboutSection : user.about )}
             <h4>Joined {user.createdAt}</h4>
             <h4>Email {user.email} </h4>
         </div>
