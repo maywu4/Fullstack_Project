@@ -7,7 +7,7 @@ import ProfileMenu from "./ProfileMenu";
 
 
 
-const Navigation = () => {
+const Navigation = ({user}) => {
     const currentUser = useSelector(state => state.session.user);
     const loggedInLinks = (
         <div>
