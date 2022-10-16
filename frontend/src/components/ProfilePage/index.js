@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getUser, fetchUser, updateUser } from "../../store/user";
@@ -19,8 +19,7 @@ const ProfilePage = () => {
     // const [username, setUsername] = useState();
     const [about, setAbout] = useState('Write a little about yourself'); 
     const [selectTab, setSelectTab] = useState('aboutTab');
-    // const currentUser = useSelector(state => state.session.user); // make this dynamic  
-    // debugger;
+    const currentUser = useSelector(state => state.session.user); // make this dynamic  
     useEffect(() => {
         dispatch(fetchUser(userId));
     }, [userId, dispatch]);
@@ -29,8 +28,8 @@ const ProfilePage = () => {
 
     const aboutSelection = (
         <div className="selections" id="aboutSelection">
-            <textarea defaultValue={ about }></textarea>
             
+            {(currentUser.id === user.id ? <textarea defaultValue={about}></textarea> : user.about )}
             <h4>Joined {user.createdAt}</h4>
             <h4>Email {user.email} </h4>
         </div>
@@ -93,19 +92,21 @@ const ProfilePage = () => {
 
     return (
         <div className="userProfile">
-            <Navigation />
+            <Navigation user={user}/>
             <div className="userCover">
-                <img src={ profilePic} alt="user_profile_pic" />
+                {/* <img src={ profilePic} alt="user_profile_pic" /> */}
+                
+                {user.picture ? <img src={user.picture} alt='' /> : <img src={profilePic} alt="" /> }
+                
                 <div id="userNames">
                     <div id="coverHeading">
                         <h4> {user.firstName} {user.lastName}</h4>
-                        <EditInfoButton />
+                        {(currentUser.id === user.id ? <EditInfoButton /> : null )}
                     </div>
                     <br />
                     <div id="userInfo">
                         <ul id="userInfoLeft">
                             
-                            <img src={user.picture} alt=''/>
                             <li> {user.username} </li>
                             <li> # Followers</li>
                             <li> # Following</li>

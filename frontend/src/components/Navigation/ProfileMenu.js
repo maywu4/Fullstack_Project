@@ -14,11 +14,11 @@ const ProfileMenu = () => {
 
     const linksList = (
         <ul className="profile-dropdown" id="profileLinksList">
-            <li><button><a href={ profilePath }>About</a></button></li>
+            <li><a href={ profilePath }><button>About</button></a></li>
             {/* <br /> */}
-            <li><button><a href={ profilePath }>Photostream</a></button></li>
+            <li><a href={ profilePath }><button>Photostream</button></a></li>
             {/* <br /> */}
-            <li><button><a href={ profilePath }>Faves</a></button></li>
+            <li><a href={ profilePath }><button>Faves</button></a></li>
         </ul>
     );
 

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+// import SettingsPage from "../SettingsPage";
 
 const EditInfoButton = () => {
     const [showMenu, setShowMenu] = useState(false);
-    const currentUser = useSelector(state => state.session.user);
-    let profilePath = `/people/${currentUser.id}` //to be updates to settings path
+    // const currentUser = useSelector(state => state.session.user);
+    let settingsPath = '../account-settings'
     
     const openMenu = () => {
         if (showMenu) return;
@@ -13,9 +14,9 @@ const EditInfoButton = () => {
 
     const editsList = (
         <ul className="profile-dropdown" id="profileLinksList">
-            <li><button><a href={profilePath}>Change cover photo</a></button></li>
-            <li><button><a href={profilePath}>Edit username</a></button></li>
-            <li><button><a href={profilePath}>Edit real name</a></button></li>
+            <li><a href={settingsPath}><button>Change cover photo</button></a></li>
+            <li><a href={settingsPath}><button>Edit username</button></a></li>
+            <li><a href={settingsPath}><button>Edit real name</button></a></li>
         </ul>
     ); 
 

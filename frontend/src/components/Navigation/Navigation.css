@@ -191,7 +191,13 @@ img {
 
 }
 
-.profileOptions button, 
-.profileOptions button img {
+.profileOptions button {
     border-radius: 50px;
+    width: 2rem;
+    height: 2rem;
 }
+
+/* .profileOptions button img {
+    object-position: 50% 50%;
+} */
+

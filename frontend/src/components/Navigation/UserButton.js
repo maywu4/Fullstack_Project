@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { useEffect, useState } from "react";
-import profileImg from '../ProfilePage/profilePic.png'
+// import profileImg from '../ProfilePage/profilePic.png'
 
 
 const UserButton = ({ user }) => {
@@ -40,8 +40,8 @@ const UserButton = ({ user }) => {
 
     return (
         <div className="profileOptions">
-            <button onClick={openMenu}>
-                <img className="profileButton" src={ profileImg } alt="profile icon" />
+            <button onClick={openMenu} style={{ backgroundImage: `url("${user.picture}")` }}>
+                {/* <img src={user.picture} alt='' /> */}
             </button>
             { showMenu && profileLinksList }
         </div>
