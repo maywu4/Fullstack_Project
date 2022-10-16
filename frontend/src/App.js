@@ -6,6 +6,7 @@ import SignupFormPage from './components/SignupFormPage';
 import SplashPage from './components/SplashPage';
 import HomePage from './components/HomePage';
 import ProfilePage from './components/ProfilePage';
+import SettingsPage from './components/SettingsPage';
 
 
 
@@ -14,11 +15,21 @@ export default function App() {
   
   const userProfile = () => {
     let profilePath = '/people/:userId';
-     return (
+      return (
       <Route path={profilePath}>
         <ProfilePage />
-      </Route>)
-     };
+      </Route>
+      );
+  };
+
+  const userSettings = () => {
+    let settingsPath = './account-settings';
+    return (
+      <Route path={settingsPath}>
+        <SettingsPage />
+      </Route>
+    );
+  };
 
   return (
     <Switch>
@@ -35,6 +46,7 @@ export default function App() {
         <HomePage />
       </Route>
       { currentUser ? userProfile() : null }
+      { currentUser ? userSettings() : null}
     </Switch>
   );
 }
