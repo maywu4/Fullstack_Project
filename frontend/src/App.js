@@ -23,7 +23,7 @@ export default function App() {
   };
 
   const userSettings = () => {
-    let settingsPath = './account-settings';
+    let settingsPath = '/account-settings';
     return (
       <Route path={settingsPath}>
         <SettingsPage />
