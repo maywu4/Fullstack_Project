@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 const EditInfoButton = () => {
     const [showMenu, setShowMenu] = useState(false);
     // const currentUser = useSelector(state => state.session.user);
-    let settingsPath = '../account-settings'
+    let settingsPath = '/account-settings'
     
     const openMenu = () => {
         if (showMenu) return;

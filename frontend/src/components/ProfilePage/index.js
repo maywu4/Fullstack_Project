@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getUser, fetchUser, updateUser } from "../../store/user";
@@ -9,46 +9,60 @@ import Navigation from "../Navigation";
 import profilePic from './profilePic.png';
 import './ProfilePage.css'
 
-const ProfilePage = () => {
+const ProfilePage = (props) => {
     const dispatch = useDispatch();
     const { userId } = useParams();
     // const user = userId ? useSelector(getUser(userId)) : { username:'', email: '', firstName: '', lastName: '', age: 35, password: '', about: '' }
+    useEffect(() => {
+        dispatch(fetchUser(userId));
+        setCurrentAbout(user ? user.about : 'Write a little about yourself');
+    }, []);
     const user = useSelector(getUser(userId));
     const currentUser = useSelector(state => state.session.user); // make this dynamic  
     // const [firstName, setFirstName] = useState();
     // const [lastName, setLastName] = useState();
     // const [username, setUsername] = useState();
-    const [currentAbout, setCurrentAbout] = useState( currentUser.about ? currentUser.about : 'Write a little about yourself'); 
+    // debugger
+    // const userAbout = user ? user.about : null
+    // debugger
+    const [currentAbout, setCurrentAbout] = useState( ); 
+    
+    // debugger
     // const about = user.about ? user.about : 'Write a little about yourself';
     const [selectTab, setSelectTab] = useState('aboutTab');
-    useEffect(() => {
-        dispatch(fetchUser(userId));
-    }, [userId, dispatch]);
 
+
+    // debugger
+    if (!currentUser) return <Redirect to="/" />;    
     if (!user) return null;
+    // debugger
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(currentAbout)
+        console.log(currentAbout);
+        user.about = currentAbout
         dispatch(updateUser(user));
         console.log(currentUser.about);
+        console.log(currentUser)
     }
 
 
-    const aboutSection = (
+    const aboutSection = () => {
+        debugger
+        return(
         <form className="editAbout" onSubmit={ handleSubmit }>
             <label> About Me
                 <br />
-                <textarea defaultValue={currentAbout} onChange={ e => setCurrentAbout(e.target.value)}></textarea>
+                <textarea value={ currentAbout } onChange={ e => setCurrentAbout(e.target.value)}></textarea>
             </label>
             <br />
             <input type="submit" value="Save" />
-        </form>
-    );
+        </form>)
+    };
 
     const aboutSelection = (
         <div className="selections" id="aboutSelection">
-            {(currentUser.id === user.id ? aboutSection : user.about )}
+            {(currentUser.id === user.id ? aboutSection() : user.about )}
             <h4>Joined {user.createdAt}</h4>
             <h4>Email {user.email} </h4>
         </div>
@@ -111,7 +125,7 @@ const ProfilePage = () => {
 
     return (
         <div className="userProfile">
-            <Navigation user={user}/>
+            <Navigation user={user} setSelectTab={setSelectTab}/>
             <div className="userCover">
                 {/* <img src={ profilePic} alt="user_profile_pic" /> */}
                 
