@@ -7,12 +7,12 @@ import ProfileMenu from "./ProfileMenu";
 
 
 
-const Navigation = ({user}) => {
+const Navigation = ({user, setSelectTab}) => {
     const currentUser = useSelector(state => state.session.user);
     const loggedInLinks = (
         <div>
             <ul className="loggedInLinks">
-                <li id="youMenu"><ProfileMenu /></li>
+                <li id="youMenu"><ProfileMenu setSelectTab={setSelectTab}/></li>
                 <li id="userMenu"><UserButton user={currentUser} /></li>
             </ul> 
         </div>
