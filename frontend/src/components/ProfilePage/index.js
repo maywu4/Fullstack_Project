@@ -22,38 +22,43 @@ const ProfilePage = (props) => {
     // const [firstName, setFirstName] = useState();
     // const [lastName, setLastName] = useState();
     // const [username, setUsername] = useState();
-    // debugger
-    // const userAbout = user ? user.about : null
-    // debugger
-    const [currentAbout, setCurrentAbout] = useState( ); 
     
-    // debugger
+    // const userAbout = user ? user.about : null
+    
+    const [currentAbout, setCurrentAbout] = useState( ); 
     // const about = user.about ? user.about : 'Write a little about yourself';
     const [selectTab, setSelectTab] = useState('aboutTab');
+    
+    // useEffect(() => {
+    //     dispatch(fetchUser(userId));
+    //     user ? setCurrentAbout(user.about) : setCurrentAbout("null")
+    //     // user ? setCurrentAbout(user.about) : setCurrentAbout("Write a little about yourself")
+    //     // setCurrentAbout(user ? user.about : 'Write a little about yourself');
+    // }, [user]);
 
-
-    // debugger
+    
     if (!currentUser) return <Redirect to="/" />;    
     if (!user) return null;
-    // debugger
-
+    
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(currentAbout);
+        
         user.about = currentAbout
         dispatch(updateUser(user));
-        console.log(currentUser.about);
-        console.log(currentUser)
+        
     }
-
-
+    
+    
     const aboutSection = () => {
-        debugger
         return(
         <form className="editAbout" onSubmit={ handleSubmit }>
             <label> About Me
                 <br />
-                <textarea value={ currentAbout } onChange={ e => setCurrentAbout(e.target.value)}></textarea>
+                <textarea
+                    value={currentAbout}
+                    onChange={e => setCurrentAbout(e.target.value)}>
+                </textarea>
             </label>
             <br />
             <input type="submit" value="Save" />
@@ -134,7 +139,7 @@ const ProfilePage = (props) => {
                 <div id="userNames">
                     <div id="coverHeading">
                         <h4> {user.firstName} {user.lastName}</h4>
-                        {(currentUser.id === user.id ? <EditInfoButton /> : null )}
+                        {(currentUser.id === user.id ? <EditInfoButton user={ user }/> : null )}
                     </div>
                     <br />
                     <div id="userInfo">
