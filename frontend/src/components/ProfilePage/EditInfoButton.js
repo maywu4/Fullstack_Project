@@ -2,10 +2,10 @@ import { useState, useEffect } from "react"
 // import { useSelector } from "react-redux";
 // import SettingsPage from "../SettingsPage";
 
-const EditInfoButton = () => {
+const EditInfoButton = ({user}) => {
     const [showMenu, setShowMenu] = useState(false);
     // const currentUser = useSelector(state => state.session.user);
-    let settingsPath = '/account-settings'
+    let settingsPath = `/${user.id}/account-settings`
     
     const openMenu = () => {
         if (showMenu) return;

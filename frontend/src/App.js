@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import SplashPage from './components/SplashPage';
@@ -11,7 +11,7 @@ import SettingsPage from './components/SettingsPage';
 
 
 export default function App() {
-  const currentUser = useSelector(state => state.session.user);
+  // const currentUser = useSelector(state => state.session.user);
   
   const userProfile = () => {
     let profilePath = '/people/:userId';
@@ -23,7 +23,7 @@ export default function App() {
   };
 
   const userSettings = () => {
-    let settingsPath = '/account-settings';
+    let settingsPath = '/:userId/account-settings';
     return (
       <Route path={settingsPath}>
         <SettingsPage />
@@ -45,8 +45,10 @@ export default function App() {
       <Route path="/homepage">
         <HomePage />
       </Route>
-      { currentUser ? userProfile() : null }
-      { currentUser ? userSettings() : null}
+      {/* { currentUser ? userProfile() : null } */}
+      {userProfile()}
+      {/* { currentUser ? userSettings() : null} */}
+      {userSettings()}
     </Switch>
   );
 }
