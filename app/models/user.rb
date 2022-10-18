@@ -33,6 +33,12 @@ class User < ApplicationRecord
 
     has_one_attached :photo
 
+    has_many :posts, 
+        primary_key: :id, 
+        foreign_key: :poster_id,
+        class_name: :Post,
+        dependent: :destroy
+
     def self.find_by_credentials(credential, password)
 
         if credential.match(URI::MailTo::EMAIL_REGEXP)
