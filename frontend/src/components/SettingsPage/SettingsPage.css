@@ -1,3 +1,37 @@
+.userSettings {
+    width: auto;
+    height: auto;
+    background-color: #f3f5f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.userSettings h1 {
+    font-size: 24px;
+    margin: 2rem;
+}
+
+.settingsPage h6 {
+    font-size: 22px;
+}
+
+#accountInfo,
+.profileSettings {
+    margin: 2rem 6rem;
+}
+
+#settingsTitle {
+    width: 100%;
+    height: 10vh;
+    border: darkgray;
+    border-style: solid;
+    background-color: white;
+    padding: 2rem 4rem;
+}
+
+
 #accountInfo, 
 .profileSettings {
     border: grey solid 1px;
@@ -7,11 +41,31 @@
     padding: 35px;
     width: 70%;
     background-color: white;
-    margin: 20px;
+    /* margin: 20px; */
     border-radius: 5px;
 }
 
-.userSettings {
-    width: 100%;
-    height: 100%
+/* #accountInfo {
+    border: grey solid 1px;
+    padding: 0px;
 }
+
+#accountDiv {
+    border-bottom: red solid 1px;
+    padding: 15px;
+    width: auto;
+} */
+
+
+.loginSettings:first-child {
+    font-weight: 600;
+}
+
+.loginEmail {
+    color: #799fcbff;
+}
+
+.userNames {
+    color: #c9b4edff;
+}
+
