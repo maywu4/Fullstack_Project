@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getUser, fetchUser, updateUser } from "../../store/user";
-import littleIsland from './littleIsland.png'; 
+import littleIsland from './littleIsland.png';
 import EditInfoButton from "./EditInfoButton";
 import Navigation from "../Navigation";
 import profilePic from './profilePic.png';
@@ -15,59 +15,52 @@ const ProfilePage = (props) => {
     // const user = userId ? useSelector(getUser(userId)) : { username:'', email: '', firstName: '', lastName: '', age: 35, password: '', about: '' }
     useEffect(() => {
         dispatch(fetchUser(userId));
-        setCurrentAbout(user ? user.about : 'Write a little about yourself');
     }, []);
     const user = useSelector(getUser(userId));
     const currentUser = useSelector(state => state.session.user); // make this dynamic  
     // const [firstName, setFirstName] = useState();
     // const [lastName, setLastName] = useState();
     // const [username, setUsername] = useState();
-    
+    // debugger
     // const userAbout = user ? user.about : null
-    
-    const [currentAbout, setCurrentAbout] = useState( ); 
+    // debugger
+    const [currentAbout, setCurrentAbout] = useState(null);
+
+    // debugger
     // const about = user.about ? user.about : 'Write a little about yourself';
     const [selectTab, setSelectTab] = useState('aboutTab');
-    
-    // useEffect(() => {
-    //     dispatch(fetchUser(userId));
-    //     user ? setCurrentAbout(user.about) : setCurrentAbout("null")
-    //     // user ? setCurrentAbout(user.about) : setCurrentAbout("Write a little about yourself")
-    //     // setCurrentAbout(user ? user.about : 'Write a little about yourself');
-    // }, [user]);
 
-    
-    if (!currentUser) return <Redirect to="/" />;    
+
+    // debugger
+    if (!currentUser) return <Redirect to="/" />;
     if (!user) return null;
-    
-    
+    // debugger
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+        console.log(currentAbout);
         user.about = currentAbout
         dispatch(updateUser(user));
-        
+        console.log(currentUser.about);
+        console.log(currentUser)
     }
-    
-    
+
+
     const aboutSection = () => {
-        return(
-        <form className="editAbout" onSubmit={ handleSubmit }>
-            <label> About Me
+        return (
+            <form className="editAbout" onSubmit={handleSubmit}>
+                <label> About Me
+                    <br />
+                    <textarea value={currentAbout !== null ? currentAbout : user.about } onChange={e => setCurrentAbout(e.target.value)} placeholder='Write a little about yourself'></textarea>
+                </label>
                 <br />
-                <textarea
-                    value={currentAbout}
-                    onChange={e => setCurrentAbout(e.target.value)}>
-                </textarea>
-            </label>
-            <br />
-            <input type="submit" value="Save" />
-        </form>)
+                <input type="submit" value="Save" />
+            </form>)
     };
 
     const aboutSelection = (
         <div className="selections" id="aboutSelection">
-            {(currentUser.id === user.id ? aboutSection() : user.about )}
+            {(currentUser.id === user.id ? aboutSection() : user.about)}
             <h4>Joined {user.createdAt}</h4>
             <h4>Email {user.email} </h4>
         </div>
@@ -78,7 +71,7 @@ const ProfilePage = (props) => {
             <ul>
                 {/* add user photos posted */}
                 {/* {user.photos.map(photo => <li key={photo}>{photo}</li>)} */}
-                <li><img src={ littleIsland} alt="pic 1" /></li>
+                <li><img src={littleIsland} alt="pic 1" /></li>
                 <li><img src={littleIsland} alt="pic 2" /></li>
                 <li><img src={littleIsland} alt="pic 3" /></li>
                 <li><img src={littleIsland} alt="pic 4" /></li>
@@ -130,28 +123,28 @@ const ProfilePage = (props) => {
 
     return (
         <div className="userProfile">
-            <Navigation user={user} setSelectTab={setSelectTab}/>
+            <Navigation user={user} setSelectTab={setSelectTab} />
             <div className="userCover">
                 {/* <img src={ profilePic} alt="user_profile_pic" /> */}
-                
-                {user.picture ? <img src={user.picture} alt='' /> : <img src={profilePic} alt="" /> }
-                
+
+                {user.picture ? <img src={user.picture} alt='' /> : <img src={profilePic} alt="" />}
+
                 <div id="userNames">
                     <div id="coverHeading">
                         <h4> {user.firstName} {user.lastName}</h4>
-                        {(currentUser.id === user.id ? <EditInfoButton user={ user }/> : null )}
+                        {(currentUser.id === user.id ? <EditInfoButton user={user}/> : null)}
                     </div>
                     <br />
                     <div id="userInfo">
                         <ul id="userInfoLeft">
-                            
+
                             <li> {user.username} </li>
                             <li> # Followers</li>
                             <li> # Following</li>
                         </ul>
                         <ul id="userInfoRight">
                             <li> # Photos</li>
-                            <li> Joined {user.createdAt.slice(0,4)}</li>
+                            <li> Joined {user.createdAt.slice(0, 4)}</li>
                         </ul>
                     </div>
                 </div>
@@ -166,14 +159,14 @@ const ProfilePage = (props) => {
                 <button className="selectedTab" onClick={selectTab('click', "photostreamSelection")}>Photostream</button>
                 <button className="selectedTab" onClick={selectTab('click', "favesSelection")}>Faves</button>  */}
                 <ul className="selectionTabs">
-                    <li className={ selectTab === 'aboutTab' ? 'active' : "" } onClick={ selectAbout }>About</li>
-                    <li className={selectTab === 'photostreamTab' ? 'active' : ""} onClick={ selectPhotostream } >Photostream</li>
-                    <li className={ selectTab === 'favesTab' ? 'active' : "" } onClick={ selectFaves } >Faves</li>
+                    <li className={selectTab === 'aboutTab' ? 'active' : ""} onClick={selectAbout}>About</li>
+                    <li className={selectTab === 'photostreamTab' ? 'active' : ""} onClick={selectPhotostream} >Photostream</li>
+                    <li className={selectTab === 'favesTab' ? 'active' : ""} onClick={selectFaves} >Faves</li>
                 </ul>
             </div>
             <div className="menuSelection">
                 {/* conditional to render selection based on tab selected in 'profileMenu' */}
-                { conditionalShow()}
+                {conditionalShow()}
                 {/* { aboutSelection }
                 { photostreamSelection }
                 { favesSelection } */}
