@@ -12,12 +12,7 @@ const SettingsPage = () => {
 
     const dispatch = useDispatch();
     const { userId } = useParams();
-    // const [showEditName, setShowEditName] = useState(false);
 
-    // const openEditName = () => {
-    //     if (showEditName) return;
-    //     setShowEditName(true);
-    // }
 
     
     const user = useSelector(getUser(userId));
@@ -30,15 +25,6 @@ const SettingsPage = () => {
 
     useEffect(() => {
         dispatch(fetchUser(userId));
-        // if(!showEditName) return;
-
-        // const closeMenu = () => {
-        //     setShowEditName(false);
-        // };
-
-        // document.addEventListener('click', closeMenu);
-
-        // return () => document.removeEventListener('click', closeMenu);
     }, []);
     
     if (!currentUser) return <Redirect to="/" />;
@@ -53,22 +39,7 @@ const SettingsPage = () => {
         dispatch(updateUser(user));
     };
 
-    // debugger
 
-    // if (!currentUser) return <Redirect exact to="/" />;
-
-    // const handleEditName = (e) => {
-    //     return (
-    //         <form action="">
-    //             <label > First Name:
-    //                 <input type="text" />
-    //             </label>
-    //             <label > Last Name:
-    //                 <input type="text" />
-    //             </label>
-    //         </form>
-    //     )
-    // };
 
     const showNameUpdate = () => {
         return (
@@ -134,8 +105,7 @@ const SettingsPage = () => {
                     <div>Your display name is <div className="userNames">{user.username}</div> </div>
 
                     { showNameUpdate() }
-                    {/* <button onClick={openEditName}>Change</button> */}
-                    {/* {showEditName && showNameUpdate()}  */}
+
                 </div>
             </div>
         </div>

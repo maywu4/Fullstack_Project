@@ -12,29 +12,21 @@ import './ProfilePage.css'
 const ProfilePage = (props) => {
     const dispatch = useDispatch();
     const { userId } = useParams();
-    // const user = userId ? useSelector(getUser(userId)) : { username:'', email: '', firstName: '', lastName: '', age: 35, password: '', about: '' }
+    
     useEffect(() => {
         dispatch(fetchUser(userId));
     }, []);
     const user = useSelector(getUser(userId));
-    const currentUser = useSelector(state => state.session.user); // make this dynamic  
-    // const [firstName, setFirstName] = useState();
-    // const [lastName, setLastName] = useState();
-    // const [username, setUsername] = useState();
-    // debugger
-    // const userAbout = user ? user.about : null
-    // debugger
+    const currentUser = useSelector(state => state.session.user);
     const [currentAbout, setCurrentAbout] = useState(null);
 
-    // debugger
-    // const about = user.about ? user.about : 'Write a little about yourself';
+ 
     const [selectTab, setSelectTab] = useState('aboutTab');
 
 
-    // debugger
+ 
     if (!currentUser) return <Redirect to="/" />;
     if (!user) return null;
-    // debugger
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -148,16 +140,10 @@ const ProfilePage = (props) => {
                         </ul>
                     </div>
                 </div>
-                {/* add followers & following */}
-                {/* add # of photos */}
+
             </div>
             <div className="selectionMenu">
-                {/* nest in link - /people/username/ */}
-                {/* nest in link - /photos/username/ */}
-                {/* nest in link - /photos/username/favorites */}
-                {/* <button className="selectedTab" onClick={selectTab('click', "aboutSelection")}>About</button>
-                <button className="selectedTab" onClick={selectTab('click', "photostreamSelection")}>Photostream</button>
-                <button className="selectedTab" onClick={selectTab('click', "favesSelection")}>Faves</button>  */}
+
                 <ul className="selectionTabs">
                     <li className={selectTab === 'aboutTab' ? 'active' : ""} onClick={selectAbout}>About</li>
                     <li className={selectTab === 'photostreamTab' ? 'active' : ""} onClick={selectPhotostream} >Photostream</li>
@@ -167,9 +153,7 @@ const ProfilePage = (props) => {
             <div className="menuSelection">
                 {/* conditional to render selection based on tab selected in 'profileMenu' */}
                 {conditionalShow()}
-                {/* { aboutSelection }
-                { photostreamSelection }
-                { favesSelection } */}
+
             </div>
         </div>
     )
