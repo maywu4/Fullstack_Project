@@ -16,7 +16,7 @@ ApplicationRecord.transaction do
   ApplicationRecord.connection.reset_pk_sequence!('users')
 
   puts "Creating users..."
-  # Create one user with an easy to remember username, email, and password:
+  # Create users with an easy to remember username, email, and password:
   User.create!(
     username: 'Testing-123', 
     email: 'helloWord@user.io', 
@@ -56,6 +56,35 @@ ApplicationRecord.transaction do
   )
 
 
+  puts "Creating posts..."
+
+  Post.create!(
+    title:"Sky's on Fire",
+    description: 'Sunset over Verrazano Bridge',
+    poster_id: 1
+  )
+
+  Post.create!(
+    title:'Little Island',
+    description: "NYC's Little Island",
+    poster_id: 1
+  )
+
+  Post.create!(
+    title:'Hello Maxi',
+    poster_id: 3
+  )
+
+  Post.create!(
+    title:'Maxi Maxi Maxi!',
+    poster_id: 3
+  )
+
+  Post.create!(
+    title:"Maxi's Nap Time",
+    description: 'The best time of the day is nap time',
+    poster_id: 3
+  )
 
   puts "Done!"
 end
