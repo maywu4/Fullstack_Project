@@ -21,6 +21,9 @@ const SettingsPage = () => {
     const [firstName, setFirstName] = useState( user ? user.firstName : '' );
     const [lastName, setLastName] = useState( user ? user.lastName : '');
     const [username, setUsername] = useState( user ? user.username : '');
+    const [profilePic, setProfilePic] = useState( null );
+    const [coverPhoto, setCoverPhoto] = useState( null );
+
 
 
     useEffect(() => {
@@ -75,24 +78,88 @@ const SettingsPage = () => {
 
     };
 
+    const handleProfilePic = (e) => {
+        e.preventDefault();
+        const profPic = e.currentTarget.files[0]
+        setProfilePic(profPic);
+        const formData = new FormData();
+        if (profilePic) {
+            formData.append(user.profilePic, profPic);
+        };
+        console.log('hello')
+        // dispatch(updateUser(user));
+        setProfilePic(null)
+    };
+
+    const handleCoverPhoto = (e) => {
+        debugger
+        e.preventDefault();
+        
+        const formData = new FormData();
+        if (coverPhoto) {
+            formData.append('user[coverPic]', coverPhoto);
+        };
+        dispatch(updateUser(formData, currentUser.id));
+        setCoverPhoto(null)
+    }
+
+    const handleCoverFile = (e) => {
+        debugger
+        const coverPic = e.currentTarget.files[0]
+        setCoverPhoto(coverPic);
+    }
+
+
+    const showPhotosUpdate = () => {
+        // console.log(profilePic)
+        // console.log(coverPhoto)
+        return (
+            <div id="photosUpdate">
+                {/* <img src={} alt="" /> */}
+                {/* <form onSubmit={ handlePofilePic }>
+                    <label> Profile Picture
+                <h6>Change Profile Picture</h6>
+                    <br />
+                    <input type="file" onClick={ handleProfilePic } />
+                    </label>
+                    <input type="submit" value="Update Profile Picture" />
+                </form> */}
+                <br />
+                <form onSubmit={ handleCoverPhoto }>
+                    <h6>Change Cover Photo</h6>
+                    <br />
+                    <label> Cover Photo 
+                    <input type="file" onChange={ handleCoverFile }/>
+                    </label>
+                    <input type="submit" value="Update Cover Photo" />
+                </form>
+
+            </div>
+        )
+    }
+
 
     return (
         <div className="settingsPage">
             <Navigation />
             <div className="userSettings">
                 <div id="settingsTitle">
+                    {user.picture ? <img src={user.picture} alt='' /> : <img src={profilePic} alt="" />}
                     <h1>Account Settings</h1>
                 </div>
-                <div id="accountInfo">
-                    <div id="accountDiv">
-                        <h6>Account</h6>
+                <div id='settingsTop'>
+                    <div id="accountInfo">
+                        <div id="accountDiv">
+                            <h6>Account</h6>
+                        </div>
+                        <br />
+                        <div id="loginSettings">
+                            <p>Login email</p>
+                            <p className="loginEmail">{user.email}</p>
+                        </div>
+                        <br />
                     </div>
-                    <br />
-                    <div id="loginSettings">
-                        <p>Login email</p>
-                        <p className="loginEmail">{user.email}</p>
-                    </div>
-                    <br />
+                    {showPhotosUpdate()}
                 </div>
                 <div className="profileSettings">
                     <div id="profileDiv">
