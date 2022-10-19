@@ -18,22 +18,34 @@
 }
 
 #accountInfo,
-.profileSettings {
+.profileSettings,
+#photosUpdate {
     margin: 2rem 6rem;
 }
 
 #settingsTitle {
-    width: 100%;
+    width: 100vw;
     height: 10vh;
     border: darkgray;
     border-style: solid;
     background-color: white;
     padding: 2rem 4rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 
+#settingsTop {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    /* padding: 2rem; */
+}
+
 #accountInfo, 
-.profileSettings {
+.profileSettings,
+#photosUpdate {
     border: grey solid 1px;
     display: flex;
     flex-direction: column;
