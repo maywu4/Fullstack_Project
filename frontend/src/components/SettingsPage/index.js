@@ -92,14 +92,14 @@ const SettingsPage = () => {
     };
 
     const handleCoverPhoto = (e) => {
-        debugger
+        // debugger
         e.preventDefault();
         
         const formData = new FormData();
         if (coverPhoto) {
             formData.append('user[coverPic]', coverPhoto);
         };
-        dispatch(updateUser(formData, currentUser.id));
+        dispatch(updateUser(formData, currentUser.id)); //update to new thunk action
         setCoverPhoto(null)
     }
 
