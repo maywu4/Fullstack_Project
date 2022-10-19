@@ -26,7 +26,7 @@ export const getPost = (postId) => ({posts}) => ( posts ? posts[postId] : null )
 export const fetchPosts = () => async dispatch => {
     const res = await csrfFetch('/api/posts');
     const data = await res.json();
-    dispatch(receivePosts(data))
+    dispatch(receivePosts(data.posts))
 }
 
 export const fetchPost = (postId) => async dispatch => {
