@@ -6,7 +6,7 @@ import { getUser, fetchUser, updateUser } from "../../store/user";
 import littleIsland from './littleIsland.png';
 import EditInfoButton from "./EditInfoButton";
 import Navigation from "../Navigation";
-import profilePic from './profilePic.png';
+// import profilePic from './profilePic.png';
 import './ProfilePage.css'
 
 const ProfilePage = (props) => {
@@ -119,7 +119,8 @@ const ProfilePage = (props) => {
             <div className="userCover" style={{ backgroundImage: `url(${user.coverPhoto})` }}>
                 {/* <img src={ profilePic} alt="user_profile_pic" /> */}
 
-                {user.picture ? <img src={user.picture} alt='' /> : <img src={profilePic} alt="" />}
+                {/* {user.picture ? <img src={user.picture} alt='' /> : <img src={profilePic} alt="" />} */}
+                <img src={user.picture} alt='' /> 
 
                 <div id="userNames">
                     <div id="coverHeading">

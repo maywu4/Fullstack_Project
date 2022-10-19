@@ -31,7 +31,10 @@ class User < ApplicationRecord
 
     before_validation :ensure_session_token
 
-    has_one_attached :photo
+    # has_many_attached :photos
+    has_one_attached :profile_pic
+    has_one_attached :cover_pic
+
 
     has_many :posts, 
         primary_key: :id, 

@@ -25,7 +25,7 @@ export const fetchUser = (userId) => async dispatch => {
 }
 
 export const updateUser = (user) => async dispatch => {
-    debugger
+    // debugger
     const { username, email, firstName, lastName, age, password, about, profilePic, coverPic } = user;
     const res = await csrfFetch(`/api/users/${user.id}`, {
         method: 'PATCH',
@@ -46,6 +46,26 @@ export const updateUser = (user) => async dispatch => {
     return res;
 
 };
+
+//make update user cover & profile pic thunk action 
+
+export const updateUserPics = (formData, userId) => async dispatch => {
+    const res = await csrfFetch(`/api/users/${userId}`, {
+        method: 'PATCH',
+        body: formData
+    });
+    const data = await res.json();
+    dispatch(receiveUser(data.user));
+};
+
+
+// if (options.method.toUpperCase() !== "GET") {
+//     if (!options.headers["Content-Type"] && !(options.body instanceof FormData)) {
+//         options.headers["Content-Type"] = "application/json";
+//     }
+//     options.headers["X-CSRF-Token"] = sessionStorage.getItem("X-CSRF-Token");
+// }
+
 
 const userReducer = ( state = {}, action ) => {
     switch (action.type) {

@@ -15,13 +15,13 @@ const HomePage = () => {
         dispatch(fetchPosts());
     },[]);
     
-    console.log(posts)
+    // console.log(posts)
     
     if (!currentUser) return <Redirect exact to="/" />;
     if (!posts) return null;
 
-    const postItems = posts.map((post) => ( <PostItem key={post} post={post} />))
-
+    const postItems = posts.map((post) => ( <PostItem key={post.id} post={post} />))
+    console.log(postItems)
     return (
         <div className="homePage">
             <Navigation/>
@@ -29,7 +29,7 @@ const HomePage = () => {
             <ul>
                 {/* {postItems} */}
                 {/* {posts ? posts.map((post) => (<ul><li>{post}</li></ul>)) : null } */}
-                { posts ? postItems : null}
+                { postItems }
             </ul>
         </div>
     )

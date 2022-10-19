@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require 'open-uri'
+
 ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
@@ -17,7 +19,7 @@ ApplicationRecord.transaction do
 
   puts "Creating users..."
   # Create users with an easy to remember username, email, and password:
-  User.create!(
+  user1 = User.create!(
     username: 'Testing-123', 
     email: 'helloWord@user.io', 
     first_name: 'Hello',
@@ -26,6 +28,11 @@ ApplicationRecord.transaction do
     password: 'starwarsarethebestwars',
     about: 'If you see something that moves you, and then snap it, you keep a moment. - Linda McCartney' 
   )
+
+  user1_profile = URI.open('https://momentcaptur.s3.amazonaws.com/user1ProfilePic.png')
+  user1.profile_pic.attach(io: user1_profile, filename: 'user1ProfilePic.png')
+  user1_cover = URI.open('https://momentcaptur.s3.amazonaws.com/little_island.png')
+  user1.cover_pic.attach(io: user1_cover, filename: 'little_island.png')
 
   User.create!(
     username: '456-Testing', 
@@ -37,7 +44,7 @@ ApplicationRecord.transaction do
     about: 'The picture that you took with your camera is the imagination you want to create with reality. - Scott Lorenzo'
   )
 
-  User.create!(
+  user3 = User.create!(
     username: 'maxi-maxi-maxi', 
     email: 'maxi_maxi_maxi@user.io', 
     first_name: 'Maxi',
@@ -45,6 +52,9 @@ ApplicationRecord.transaction do
     age: 18,
     password: 'qwertyuiop..'
   )
+
+  user3_profile = URI.open('https://momentcaptur.s3.amazonaws.com/maxiProfile.png')
+  user3.profile_pic.attach(io: user3_profile, filename: 'maxiProfile.png')
 
   User.create!(
     username: 'asdfghjkl', 
