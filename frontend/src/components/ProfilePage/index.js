@@ -112,11 +112,11 @@ const ProfilePage = (props) => {
                 return aboutSelection;
         }
     };
-
+    // debugger
     return (
         <div className="userProfile">
             <Navigation user={user} setSelectTab={setSelectTab} />
-            <div className="userCover">
+            <div className="userCover" style={{ backgroundImage: `url(${user.coverPhoto})` }}>
                 {/* <img src={ profilePic} alt="user_profile_pic" /> */}
 
                 {user.picture ? <img src={user.picture} alt='' /> : <img src={profilePic} alt="" />}
