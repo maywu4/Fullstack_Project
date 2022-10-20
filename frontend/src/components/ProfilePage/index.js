@@ -30,11 +30,8 @@ const ProfilePage = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(currentAbout);
         user.about = currentAbout
         dispatch(updateUser(user));
-        console.log(currentUser.about);
-        console.log(currentUser)
     }
 
 
@@ -112,7 +109,7 @@ const ProfilePage = (props) => {
                 return aboutSelection;
         }
     };
-    // debugger
+
     return (
         <div className="userProfile">
             <Navigation user={user} setSelectTab={setSelectTab} />

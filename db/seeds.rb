@@ -31,18 +31,24 @@ ApplicationRecord.transaction do
 
   user1_profile = URI.open('https://momentcaptur.s3.amazonaws.com/user1ProfilePic.png')
   user1.profile_pic.attach(io: user1_profile, filename: 'user1ProfilePic.png')
-  user1_cover = URI.open('https://momentcaptur.s3.amazonaws.com/little_island.png')
-  user1.cover_pic.attach(io: user1_cover, filename: 'little_island.png')
+  user1_cover = URI.open('https://momentcaptur.s3.amazonaws.com/cover2.png')
+  user1.cover_pic.attach(io: user1_cover, filename: 'cover2.png')
 
-  User.create!(
+  user2 = User.create!(
     username: '456-Testing', 
     email: 'internetPhotographer@user.io', 
-    first_name: 'Internet',
-    last_name: 'Photographer',
+    first_name: 'A',
+    last_name: 'C',
     age: 23,
     password: 'asdfghjklzxcvbnm',
     about: 'The picture that you took with your camera is the imagination you want to create with reality. - Scott Lorenzo'
   )
+
+  user2_profile = URI.open('https://momentcaptur.s3.amazonaws.com/ACProfile.png')
+  user2.profile_pic.attach(io: user2_profile, filename: 'ACProfile.png')
+  user2_cover = URI.open('https://momentcaptur.s3.amazonaws.com/ACCover.png')
+  user2.cover_pic.attach(io: user2_cover, filename: 'ACCover.png')
+
 
   user3 = User.create!(
     username: 'maxi-maxi-maxi', 
@@ -63,38 +69,150 @@ ApplicationRecord.transaction do
     last_name: 'HJKL',
     age: 52,
     password: 'zxcvbnm,./12345',
+    about: 'Lorem ipsum dolor sit amet, ad unum regione nec, meis honestatis accommodare per an, primis verterem te ius. Qui ne prima euismod, sit assueverit referrentur no. Errem salutandi incorrupte vis id, accumsan facilisis philosophia has eu. Eu quo error nobis eruditi, mea facilis habemus sententiae at.'
   )
 
 
   puts "Creating posts..."
 
-  Post.create!(
+  post1 = Post.create!(
     title:"Sky's on Fire",
     description: 'Sunset over Verrazano Bridge',
     poster_id: 1
   )
 
-  Post.create!(
+  post1_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user1/skyOnFire.png')
+  post1.photo.attach(io: post1_pic, filename: 'skyOnFire.png')
+
+
+  post2 = Post.create!(
     title:'Little Island',
     description: "NYC's Little Island",
     poster_id: 1
   )
 
-  Post.create!(
-    title:'Hello Maxi',
-    poster_id: 3
+  post2_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user1/littleIsland.png')
+  post2.photo.attach(io: post2_pic, filename: 'littleIsland.png')
+
+
+  post3 = Post.create!(
+    title:"Peaceful Ocean",
+    poster_id: 1
   )
 
-  Post.create!(
-    title:'Maxi Maxi Maxi!',
-    poster_id: 3
+  post3_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user1/peacefulOcean.png')
+  post3.photo.attach(io: post3_pic, filename: 'peacefulOcean.png')
+
+
+  post4 = Post.create!(
+    title:'Boston in the Fall',
+    description: "Boston Public Garden, MA",
+    poster_id: 1
   )
 
-  Post.create!(
-    title:"Maxi's Nap Time",
-    description: 'The best time of the day is nap time',
-    poster_id: 3
+  post4_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user1/bostonPark.png')
+  post4.photo.attach(io: post4_pic, filename: 'bostonPark.png')
+
+
+  post5 = Post.create!(
+    title:'Breath of Fresh Air',
+    poster_id: 1
   )
+
+  post5_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user1/resevoir.png')
+  post5.photo.attach(io: post5_pic, filename: 'resevoir.png')
+
+
+  post6 = Post.create!(
+    title:'Sunset on a Boat',
+    poster_id: 2
+  )
+
+  post6_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user2/sunsetOnBoat.png')
+  post6.photo.attach(io: post6_pic, filename: 'sunsetOnBoat.png')
+
+  post7 = Post.create!(
+    title:"Hiker's View",
+    poster_id: 2
+  )
+
+  post7_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user2/hikersView.png')
+  post7.photo.attach(io: post7_pic, filename: 'hikersView.png')
+  
+
+  post8 = Post.create!(
+    title:"LA Sunset",
+    poster_id: 2
+  )
+
+  post8_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user2/ACCover.png')
+  post8.photo.attach(io: post8_pic, filename: 'ACCover.png')
+
+  post9 = Post.create!(
+    title:"City Views",
+    poster_id: 2
+  )
+
+  post9_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user2/cityView.png')
+  post9.photo.attach(io: post9_pic, filename: 'cityView.png')
+
+  post10 = Post.create!(
+    title:"It's Beginning to Feel a Lot Like Winter",
+    poster_id: 2
+  )
+
+  post10_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user2/winter.png')
+  post10.photo.attach(io: post10_pic, filename: 'winter.png')
+
+  post11 = Post.create!(
+    title:"Boston Charles River Esplanade",
+    poster_id: 4
+  )
+
+  post11_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user4/bostonRiver.png')
+  post11.photo.attach(io: post11_pic, filename: 'bostonRiver.png')
+
+  post12 = Post.create!(
+    title:"Peak hiking",
+    description: "What's the best part of a hike? The peak.",
+    poster_id: 4
+  )
+
+  post12_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user4/hike.png')
+  post12.photo.attach(io: post12_pic, filename: 'hike.png')
+
+  post13 = Post.create!(
+    title:"Beach day",
+    description: "Santa Monica Pier, Los Angeles",
+    poster_id: 4
+  )
+
+  post13_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user4/santaMonica.png')
+  post13.photo.attach(io: post13_pic, filename: 'santaMonica.png')
+
+  post14 = Post.create!(
+    title:"Washington Mews, NYC",
+    poster_id: 4
+  )
+
+  post14_pic = URI.open('https://momentcaptur.s3.amazonaws.com/user4/washingtonMews.png')
+  post14.photo.attach(io: post14_pic, filename: 'washingtonMews.png')
+
+  # Post.create!(
+  #   title:'Hello Maxi',
+  #   poster_id: 3
+  # )
+
+  # Post.create!(
+  #   title:'Maxi Maxi Maxi!',
+  #   poster_id: 3
+  # )
+
+  # Post.create!(
+  #   title:"Maxi's Nap Time",
+  #   description: 'The best time of the day is nap time',
+  #   poster_id: 3
+  # )
 
   puts "Done!"
 end

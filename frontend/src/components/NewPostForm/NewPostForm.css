@@ -1,0 +1,7 @@
+#newPostForm>form {
+    display: flex;
+    flex-direction: column;
+    border: 5px green solid;
+    width: 500px;
+    height: 150px;
+}

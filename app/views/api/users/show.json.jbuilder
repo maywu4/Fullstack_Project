@@ -9,7 +9,7 @@ json.user do
   if @user.cover_pic.attached?
     json.coverPhoto @user.cover_pic.url
   else
-    json.coverPhoto 'https://momentcaptur.s3.amazonaws.com/cover2.png'
+    json.coverPhoto 'https://momentcaptur.s3.amazonaws.com/coverPhoto.png'
   end
 end
 
