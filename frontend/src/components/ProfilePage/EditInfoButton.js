@@ -14,7 +14,7 @@ const EditInfoButton = ({user}) => {
 
     const editsList = (
         <ul className="profile-dropdown" id="profileLinksList">
-            <li><a href={settingsPath}><button>Change cover photo</button></a></li>
+            <li><a href={settingsPath}><button>Change photos</button></a></li>
             <li><a href={settingsPath}><button>Edit username</button></a></li>
             <li><a href={settingsPath}><button>Edit real name</button></a></li>
         </ul>
