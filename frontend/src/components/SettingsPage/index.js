@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Navigation from "../Navigation";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { fetchUser, getUser, updateUser } from "../../store/user";
+import { fetchUser, getUser, updateUser, updateUserPics } from "../../store/user";
 import { Redirect } from "react-router-dom";
 // import { Redirect } from "react-router-dom";
 import './SettingsPage.css'
@@ -97,7 +97,7 @@ const SettingsPage = () => {
         if (coverPhoto) {
             formData.append('user[coverPic]', coverPhoto);
         };
-        dispatch(updateUser(formData, currentUser.id)); //update to new thunk action
+        dispatch(updateUserPics(formData, currentUser.id)); //update to new thunk action
         setCoverPhoto(null)
     }
 
