@@ -1,12 +1,16 @@
 import { useState, useRef } from "react";
+import csrfFetch from "../../store/csrf";
+import { useSelector } from "react-redux";
 import './NewPostForm.css'
 
 const NewPostForm = () => {
+    const currentUser = useSelector(state => state.session.user);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [photoFile, setPhotoFile] = useState(null);
     const [photoUrl, setPhotoUrl] = useState(null);
     const fileRef = useRef(null);
+    
 
     const handleTitleInput = e => {
         setTitle(e.currentTarget.value);
@@ -20,6 +24,7 @@ const NewPostForm = () => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('post[photo]', photoFile);
+        formData.append('post[poster_id]', currentUser.id);
 
         if (title) {
             formData.append('post[title]', title);
@@ -28,14 +33,14 @@ const NewPostForm = () => {
             formData.append('post[description]', description);
         }
 
-        const res = await fetch('/api/posts', {
+        const res = await csrfFetch('/api/posts', {
             method: 'POST',
             body: formData
         });
 
         if (res.ok) {
             const message = await res.json();
-            console.log(message.message);
+            // console.log(message.message);
             setTitle('');
             setDescription('');
             setPhotoFile(null);

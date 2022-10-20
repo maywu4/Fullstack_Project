@@ -110,6 +110,7 @@ const ProfilePage = (props) => {
         }
     };
 
+    
     return (
         <div className="userProfile">
             <Navigation user={user} setSelectTab={setSelectTab} />

@@ -26,7 +26,7 @@ export const fetchUser = (userId) => async dispatch => {
 
 export const updateUser = (user) => async dispatch => {
     // debugger
-    const { username, email, firstName, lastName, age, password, about, profilePic, coverPic } = user;
+    const { username, email, firstName, lastName, age, password, about } = user;
     const res = await csrfFetch(`/api/users/${user.id}`, {
         method: 'PATCH',
         body: JSON.stringify({
@@ -36,9 +36,7 @@ export const updateUser = (user) => async dispatch => {
             lastName,
             age,
             password,
-            about, 
-            profilePic, 
-            coverPic
+            about
         })
     });
     const data = await res.json();
@@ -59,12 +57,6 @@ export const updateUserPics = (formData, userId) => async dispatch => {
 };
 
 
-// if (options.method.toUpperCase() !== "GET") {
-//     if (!options.headers["Content-Type"] && !(options.body instanceof FormData)) {
-//         options.headers["Content-Type"] = "application/json";
-//     }
-//     options.headers["X-CSRF-Token"] = sessionStorage.getItem("X-CSRF-Token");
-// }
 
 
 const userReducer = ( state = {}, action ) => {
