@@ -7,6 +7,7 @@ import SplashPage from './components/SplashPage';
 import HomePage from './components/HomePage';
 import ProfilePage from './components/ProfilePage';
 import SettingsPage from './components/SettingsPage';
+import PostShowPage from './components/PostShowPage';
 
 
 
@@ -49,6 +50,9 @@ export default function App() {
       {userProfile()}
       {/* { currentUser ? userSettings() : null} */}
       {userSettings()}
+      <Route path="/photos/:userId/:postId">
+          <PostShowPage />
+      </Route>
     </Switch>
   );
 }

@@ -79,13 +79,14 @@ const SettingsPage = () => {
 
     const handleProfilePic = (e) => {
         e.preventDefault();
-        const profPic = e.currentTarget.files[0]
-        setProfilePic(profPic);
+
         const formData = new FormData();
+        
         if (profilePic) {
-            formData.append(user.profilePic, profPic);
+            formData.append('user[profilePic]', profilePic);
         };
-        // dispatch(updateUser(user));
+
+        dispatch(updateUserPics(formData, currentUser.id)); //update to new thunk action
         setProfilePic(null)
     };
 
@@ -107,30 +108,39 @@ const SettingsPage = () => {
         setCoverPhoto(coverPic);
     }
 
+    const handleProfileFile = (e) => {
+        // debugger
+        const profilePhoto = e.currentTarget.files[0]
+        setProfilePic(profilePhoto);
+    }
+
 
     const showPhotosUpdate = () => {
         // console.log(profilePic)
         // console.log(coverPhoto)
         return (
             <div id="photosUpdate">
-                {/* <img src={} alt="" /> */}
-                {/* <form onSubmit={ handlePofilePic }>
-                    <label> Profile Picture
-                <h6>Change Profile Picture</h6>
-                    <br />
-                    <input type="file" onClick={ handleProfilePic } />
-                    </label>
-                    <input type="submit" value="Update Profile Picture" />
-                </form> */}
+                <div id='profilePicUpdate'>
+                    <form onSubmit={handleProfilePic}>
+                        <h6>Change Profile Picture</h6>
+                        <br />
+                        <label>
+                            <input type="file" onChange={handleProfileFile} />
+                        </label>
+                        <input type="submit" value="Update Profile Picture" />
+                    </form>
+                </div>
                 <br />
-                <form onSubmit={ handleCoverPhoto }>
-                    <h6>Change Cover Photo</h6>
-                    <br />
-                    <label> Cover Photo 
-                    <input type="file" onChange={ handleCoverFile }/>
-                    </label>
-                    <input type="submit" value="Update Cover Photo" />
-                </form>
+                <div id='coverPhotoUpdate'>
+                    <form onSubmit={ handleCoverPhoto }>
+                        <h6>Change Cover Photo</h6>
+                        <br />
+                        <label>
+                        <input type="file" onChange={ handleCoverFile }/>
+                        </label>
+                        <input type="submit" value="Update Cover Photo" />
+                    </form>
+                </div>
 
             </div>
         )
@@ -139,9 +149,9 @@ const SettingsPage = () => {
 
     return (
         <div className="settingsPage">
-            <Navigation />
+            <Navigation user={user} />
             <div className="userSettings">
-                <div id="settingsTitle">
+                <div id="settingsTitle" style={{ backgroundImage: `url(${user.coverPhoto})` }}>
                     {user.picture ? <img src={user.picture} alt='' /> : <img src={profilePic} alt="" />}
                     <h1>Account Settings</h1>
                 </div>
@@ -162,12 +172,12 @@ const SettingsPage = () => {
                 <div className="profileSettings">
                     <div id="profileDiv">
                         <h6>Profile</h6>
+                        <div>Your real name is <div className="userNames">{user.firstName} {user.lastName}</div></div>
+                        <br />
+                        <div>Your display name is <div className="userNames">{user.username}</div> </div>
                     </div>
                     <br />
                     {/* <img src={user.picture} alt='' /> */}
-                    <div>Your real name is <div className="userNames">{user.firstName} {user.lastName}</div></div>
-                    <br />
-                    <div>Your display name is <div className="userNames">{user.username}</div> </div>
 
                     { showNameUpdate() }
 

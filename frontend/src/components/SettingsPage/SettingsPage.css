@@ -33,6 +33,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    background-size: cover;
+    background-position: center;
 }
 
 
@@ -44,8 +46,8 @@
 }
 
 #accountInfo, 
-.profileSettings,
-#photosUpdate {
+#profilePicUpdate,
+#coverPhotoUpdate {
     border: grey solid 1px;
     display: flex;
     flex-direction: column;
@@ -55,6 +57,23 @@
     background-color: white;
     /* margin: 20px; */
     border-radius: 5px;
+}
+
+.profileSettings {
+    border: grey solid 1px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 35px;
+    width: 70%;
+    background-color: white;
+    /* margin: 20px; */
+    border-radius: 5px;
+}
+
+#photosUpdate {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* #accountInfo {
