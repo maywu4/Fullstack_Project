@@ -4,6 +4,8 @@ import { getPosts, fetchPosts } from "../../store/posts";
 import { useEffect, useState } from "react";
 import Navigation from "../Navigation";
 import PostItem from "./postItem";
+import NewPostForm from "../NewPostForm";
+import './HomePage.css'
 
 const HomePage = () => {
     const dispatch = useDispatch();
@@ -21,11 +23,12 @@ const HomePage = () => {
     if (!posts) return null;
 
     const postItems = posts.map((post) => ( <PostItem key={post.id} post={post} />))
-    console.log(postItems)
+    // console.log(postItems)
     return (
         <div className="homePage">
             <Navigation/>
             {/* <h4>You're logged in!</h4> */}
+            <NewPostForm/>
             <ul>
                 {/* {postItems} */}
                 {/* {posts ? posts.map((post) => (<ul><li>{post}</li></ul>)) : null } */}

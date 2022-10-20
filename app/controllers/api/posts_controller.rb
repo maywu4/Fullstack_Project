@@ -1,5 +1,5 @@
 class Api::PostsController < ApplicationController
-    wrap_parameters include: Post.attribute_names + ['title'] + ['description'] + ['posterId']
+    wrap_parameters include: Post.attribute_names + ['title'] + ['description'] + ['posterId'] + [:photo]
 
     def index
         @posts = Post.all
@@ -10,7 +10,7 @@ class Api::PostsController < ApplicationController
         @post = Post.new(post_params)
 
         if @post.save
-            render :show #json: {post: @post}
+            render :show #json: {message: 'You did it!'} #json: {post: @post}
         else
             render json: { errors: @post.errors.full_messages }, status: :unprocessable_entity
         end
@@ -42,7 +42,7 @@ class Api::PostsController < ApplicationController
     private 
 
     def post_params
-        params.require(:post).permit(:title, :description)
+        params.require(:post).permit(:title, :description, :photo)
     end
 
 end

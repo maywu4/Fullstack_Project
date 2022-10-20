@@ -38,7 +38,6 @@ const SettingsPage = () => {
         user.firstName = firstName;
         user.lastName = lastName;
         user.username = username;
-        console.log(user)
         dispatch(updateUser(user));
     };
 
@@ -86,13 +85,12 @@ const SettingsPage = () => {
         if (profilePic) {
             formData.append(user.profilePic, profPic);
         };
-        console.log('hello')
         // dispatch(updateUser(user));
         setProfilePic(null)
     };
 
     const handleCoverPhoto = (e) => {
-        // debugger
+
         e.preventDefault();
         
         const formData = new FormData();
@@ -104,7 +102,7 @@ const SettingsPage = () => {
     }
 
     const handleCoverFile = (e) => {
-        debugger
+        // debugger
         const coverPic = e.currentTarget.files[0]
         setCoverPhoto(coverPic);
     }
