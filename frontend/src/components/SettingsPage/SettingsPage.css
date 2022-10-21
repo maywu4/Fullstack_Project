@@ -17,10 +17,18 @@
     font-size: 22px;
 }
 
-#accountInfo,
+
 .profileSettings,
 #photosUpdate {
     margin: 2rem 6rem;
+}
+
+#accountInfo{
+    margin: 2rem 0 2rem 6rem;
+}
+
+#coverPhotoUpdate {
+    margin-left: 6rem;
 }
 
 #settingsTitle {
