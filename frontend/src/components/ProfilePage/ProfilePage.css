@@ -155,7 +155,8 @@
 
 
 #aboutSelection > h4 {
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .editAbout {

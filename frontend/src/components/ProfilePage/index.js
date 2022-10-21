@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getUser, fetchUser, updateUser } from "../../store/user";
-import littleIsland from './littleIsland.png';
+// import littleIsland from './littleIsland.png';
 import EditInfoButton from "./EditInfoButton";
 import Navigation from "../Navigation";
 // import profilePic from './profilePic.png';
@@ -60,12 +60,12 @@ const ProfilePage = (props) => {
             <ul>
                 {/* add user photos posted */}
                 {/* {user.photos.map(photo => <li key={photo}>{photo}</li>)} */}
-                <li><img src={littleIsland} alt="pic 1" /></li>
+                {/* <li><img src={littleIsland} alt="pic 1" /></li>
                 <li><img src={littleIsland} alt="pic 2" /></li>
                 <li><img src={littleIsland} alt="pic 3" /></li>
                 <li><img src={littleIsland} alt="pic 4" /></li>
                 <li><img src={littleIsland} alt="pic 5" /></li>
-                <li><img src={littleIsland} alt="pic 6" /></li>
+                <li><img src={littleIsland} alt="pic 6" /></li> */}
             </ul>
         </div>
     );
@@ -75,12 +75,12 @@ const ProfilePage = (props) => {
             <ul>
                 {/* add user favorited/liked photos */}
                 {/* {user.favorites.map(photo => <li key={photo}>{photo}</li>)} */}
-                <li><img src="https://picsum.photos/206/206" alt="fave 1" /></li>
+                {/* <li><img src="https://picsum.photos/206/206" alt="fave 1" /></li>
                 <li><img src="https://picsum.photos/206/206" alt="fave 2" /></li>
                 <li><img src="https://picsum.photos/206/206" alt="fave 3" /></li>
                 <li><img src="https://picsum.photos/206/206" alt="fave 4" /></li>
                 <li><img src="https://picsum.photos/206/206" alt="fave 5" /></li>
-                <li><img src="https://picsum.photos/206/206" alt="fave 6" /></li>
+                <li><img src="https://picsum.photos/206/206" alt="fave 6" /></li> */}
             </ul>
         </div>
     );
@@ -142,7 +142,7 @@ const ProfilePage = (props) => {
 
             </div>
             <div className="selectionMenu">
-
+                {/* source: LogRocket (https://blog.logrocket.com/how-to-build-tab-component-react/#creating-tab-component) */}
                 <ul className="selectionTabs">
                     <li className={selectTab === 'aboutTab' ? 'active' : ""} onClick={selectAbout}>About</li>
                     <li className={selectTab === 'photostreamTab' ? 'active' : ""} onClick={selectPhotostream} >Photostream</li>

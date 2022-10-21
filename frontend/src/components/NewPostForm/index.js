@@ -39,8 +39,6 @@ const NewPostForm = () => {
         });
 
         if (res.ok) {
-            const message = await res.json();
-            // console.log(message.message);
             setTitle('');
             setDescription('');
             setPhotoFile(null);
@@ -66,15 +64,27 @@ const NewPostForm = () => {
     return (
         <div id="newPostForm">
             <form onSubmit={ handleSubmit }>
-                <label> Add a Title
-                    <input type="text" value={title} onChange={ handleTitleInput }/>
-                </label>
-                <label> Add a Description
-                    <input type="text" value={description} onChange={handleDescriptionInput} />
-                </label>
-                <input type="file" ref={ fileRef } onChange={ handleFile } required/>  
-                <h6>Photo Upload Preview</h6>   
-                {preview}
+                <h6>Create a new Post</h6>
+                <br />
+                <div>
+                    <label> Add a Title
+                        <input className='postFormInput' type="text" value={title} onChange={ handleTitleInput }/>
+                    </label>
+                </div>
+                <br />
+                <div>
+                    <label> Add a Description
+                        <input className='postFormInput' type="text" value={description} onChange={handleDescriptionInput} />
+                    </label>
+                </div>
+                <br />
+                <input id="uploadPostPic" type="file" ref={ fileRef } onChange={ handleFile } required/>  
+                <br />
+                <div id="picPreview">
+                    <h6>Photo Upload Preview</h6>
+                    {preview}
+                </div>
+                <br />
                 <button>Upload a Photo</button>
             </form>
         </div>

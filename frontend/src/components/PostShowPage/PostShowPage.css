@@ -1,0 +1,137 @@
+.postDisplay {
+    background-color: #212124;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.postDisplay>img {
+    width: 60%;
+    height: 85%;
+}
+
+/* #posterProfilePic {
+    width: 30px;
+    height: 30px;
+} */
+
+
+#postShowBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #f3f5f6;
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
+
+
+
+#postUpdate,
+#postDelete {
+    /* width: 22rem; */
+    background-color: white;
+    text-align: left;
+    margin: 10px;
+    padding: 20px;
+    border: darkgray;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+#postUpdate input,
+#postDelete button,
+#postUpdate button {
+    width: 90%;
+    height: 100%;
+    border-style: none;
+    cursor: pointer;
+}
+
+#postUpdate button {
+    background-color: #c9b4edff;
+}
+
+#postDelete button {
+    background-color: rgb(247, 87, 87);
+}
+
+#postTitleInput,
+#postDescriptionInput {
+    border: darkgray;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.postInfoTop {
+    width: auto;
+    margin: 20px 0px 10px 0;
+}
+
+.postInfoTop h6 {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.postInfoBottom {
+    width: auto;
+    /* margin: 0 20vw; */
+
+}
+
+.postInfoBottom p {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.postInfoTop>a {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.postInfoTop a:link,
+.postInfoTop a:visited,
+.postInfoTop a:hover,
+.postInfoTop a:active {
+    text-decoration: none;
+    color: black;
+}
+
+#copyright>img,
+#postUpdate>form>h6>img {
+    width: 1rem;
+    height: 1rem;
+} 
+
+#postStats {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#faveStats,
+#commentsStats,
+#takenStats {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: auto;
+}
+
+.smallStats {
+    font-size: 14px;
+}
+
+#faves, 
+#comments {
+    color: grey;
+}
