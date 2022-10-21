@@ -103,21 +103,18 @@ const SettingsPage = () => {
     }
 
     const handleCoverFile = (e) => {
-        // debugger
         const coverPic = e.currentTarget.files[0]
         setCoverPhoto(coverPic);
     }
 
     const handleProfileFile = (e) => {
-        // debugger
         const profilePhoto = e.currentTarget.files[0]
         setProfilePic(profilePhoto);
     }
 
 
     const showPhotosUpdate = () => {
-        // console.log(profilePic)
-        // console.log(coverPhoto)
+
         return (
             <div id="photosUpdate">
                 <div id='profilePicUpdate'>
@@ -172,6 +169,7 @@ const SettingsPage = () => {
                 <div className="profileSettings">
                     <div id="profileDiv">
                         <h6>Profile</h6>
+                        <br />
                         <div>Your real name is <div className="userNames">{user.firstName} {user.lastName}</div></div>
                         <br />
                         <div>Your display name is <div className="userNames">{user.username}</div> </div>
@@ -180,7 +178,6 @@ const SettingsPage = () => {
                     {/* <img src={user.picture} alt='' /> */}
 
                     { showNameUpdate() }
-
                 </div>
             </div>
         </div>

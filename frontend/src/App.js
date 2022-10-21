@@ -50,7 +50,7 @@ export default function App() {
       {userProfile()}
       {/* { currentUser ? userSettings() : null} */}
       {userSettings()}
-      <Route path="/photos/:userId/:postId">
+      <Route path="/photos/:postId">
           <PostShowPage />
       </Route>
     </Switch>

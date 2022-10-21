@@ -1,5 +1,5 @@
 json.user do
-  json.extract! @user, :id, :username, :email, :first_name, :last_name, :age, :created_at, :updated_at, :about
+  json.extract! @user, :id, :username, :email, :first_name, :last_name, :age, :created_at, :updated_at, :about, :profile_pic, :cover_pic
   if @user.profile_pic.attached?
     json.picture @user.profile_pic.url
   else
