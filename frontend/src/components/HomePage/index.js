@@ -21,8 +21,8 @@ const HomePage = () => {
     if (!currentUser) return <Redirect exact to="/" />;
     if (!posts) return null;
 
-    const postItems = posts.map((post) => ( <PostItem key={post.id} post={post} />))
-
+    const postItems = posts.reverse().map((post) => (<PostItem key={post.id} post={post} />))
+    
     return (
         <div className="homePage">
             <Navigation/>
