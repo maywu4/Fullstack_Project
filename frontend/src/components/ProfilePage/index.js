@@ -8,13 +8,16 @@ import EditInfoButton from "./EditInfoButton";
 import Navigation from "../Navigation";
 // import profilePic from './profilePic.png';
 import './ProfilePage.css'
+import { getPosts,fetchPosts } from "../../store/posts";
 
 const ProfilePage = (props) => {
     const dispatch = useDispatch();
     const { userId } = useParams();
+    const posts = useSelector(getPosts);
     
     useEffect(() => {
         dispatch(fetchUser(userId));
+        dispatch(fetchPosts());
     }, []);
     const user = useSelector(getUser(userId));
     const currentUser = useSelector(state => state.session.user);
@@ -23,10 +26,9 @@ const ProfilePage = (props) => {
  
     const [selectTab, setSelectTab] = useState('aboutTab');
 
-
- 
     if (!currentUser) return <Redirect to="/" />;
     if (!user) return null;
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -54,18 +56,19 @@ const ProfilePage = (props) => {
             <h4>Email {user.email} </h4>
         </div>
     );
+    
+
+    const photostreamItems = posts.map((post) => {
+        if (post.posterId === user.id ) {
+        return (<li key={post.id}><img src={post.picture} alt="" /></li>)
+        }
+    });
 
     const photostreamSelection = (
         <div className="selections" id="photostreamSelection">
             <ul>
                 {/* add user photos posted */}
-                {/* {user.photos.map(photo => <li key={photo}>{photo}</li>)} */}
-                {/* <li><img src={littleIsland} alt="pic 1" /></li>
-                <li><img src={littleIsland} alt="pic 2" /></li>
-                <li><img src={littleIsland} alt="pic 3" /></li>
-                <li><img src={littleIsland} alt="pic 4" /></li>
-                <li><img src={littleIsland} alt="pic 5" /></li>
-                <li><img src={littleIsland} alt="pic 6" /></li> */}
+                { posts ? photostreamItems : null }
             </ul>
         </div>
     );
@@ -110,7 +113,11 @@ const ProfilePage = (props) => {
         }
     };
 
-    
+    const numPhotos = posts.filter((post) => {
+        if (post.posterId === user.id ) return true;
+        return false;
+    }).length;
+
     return (
         <div className="userProfile">
             <Navigation user={user} setSelectTab={setSelectTab} />
@@ -128,13 +135,10 @@ const ProfilePage = (props) => {
                     <br />
                     <div id="userInfo">
                         <ul id="userInfoLeft">
-
                             <li> {user.username} </li>
-                            <li> # Followers</li>
-                            <li> # Following</li>
                         </ul>
                         <ul id="userInfoRight">
-                            <li> # Photos</li>
+                            <li> {numPhotos} Photos</li>
                             <li> Joined {user.createdAt.slice(0, 4)}</li>
                         </ul>
                     </div>
