@@ -66,6 +66,7 @@ const PostShowPage = () => {
 
     const handleDelete = (e) => {
         dispatch(deletePost(postId));
+        // return <Redirect exact to="/" />;
     }
 
     const deletePostItem = () => {

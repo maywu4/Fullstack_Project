@@ -20,6 +20,12 @@ class Post < ApplicationRecord
         foreign_key: :poster_id,
         class_name: :User
 
+    has_many :comments,
+        primary_key: :id,
+        foreign_key: :post_id,
+        class_name: :Comment,
+        dependent: :destroy
+
     # def ensure_photo
     #     unless self.photo.attached?
     #         errors.add(:photo, "must be attached")
