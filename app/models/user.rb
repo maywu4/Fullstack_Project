@@ -42,6 +42,13 @@ class User < ApplicationRecord
         class_name: :Post,
         dependent: :destroy
 
+
+    has_many :comments, 
+        primary_key: :id, 
+        foreign_key: :author_id,
+        class_name: :Comment,
+        dependent: :destroy
+
     def self.find_by_credentials(credential, password)
 
         if credential.match(URI::MailTo::EMAIL_REGEXP)
