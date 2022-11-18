@@ -23,6 +23,7 @@ const HomePage = () => {
 
     const postItems = posts.reverse().map((post) => (<PostItem key={post.id} post={post} />))
     
+    console.log(posts.reverse())
     return (
         <div className="homePage">
             <Navigation/>
