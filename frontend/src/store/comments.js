@@ -28,7 +28,7 @@ export const getPostComments = postId => state => (
   Object.values(state.comments)
         .filter(comment => comment.postId === postId)
         .map(comment => ({
-            ...review,
+            ...comment,
             author: state.users[comment.authorId]?.username
         }))
 );
