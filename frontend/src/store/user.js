@@ -5,7 +5,7 @@ export const RECEIVE_USER = 'user/fetchUser';
 // export const UPDATE_CURRENT_USER = 'user/updateCurrentUser';
 
 
-const receiveUser = (user) => ({
+export const receiveUser = (user) => ({
     type: RECEIVE_USER,
     user
 })
