@@ -8,6 +8,7 @@ import configureStore from './store';
 import csrfFetch from './store/csrf';
 import * as sessionActions from './store/session';
 import * as postActions from './store/posts';
+import * as commentActions from './store/comments';
 
 
 
@@ -19,6 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.csrfFetch = csrfFetch;
   window.sessionActions = sessionActions;
   window.postActions = postActions;
+  window.commentActions = commentActions;
 }
 
 function Root() {
