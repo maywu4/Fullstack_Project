@@ -2,7 +2,7 @@ class Api::CommentsController < ApplicationController
     wrap_parameters include: Comment.attribute_names + ['postId'] + ['authorId'] + ['body']  
 
     def create
-        @comment = current_user.comments.new(comment_params)
+        @comment = Comment.new(comment_params)
 
         if @comment.save
             render :show
@@ -13,7 +13,7 @@ class Api::CommentsController < ApplicationController
     end
 
     def show 
-        @comment = current_user.comments.find(params[:id])
+        @comment = Comment.find(params[:id])
 
         if @comment
             render :show
@@ -23,7 +23,7 @@ class Api::CommentsController < ApplicationController
     end
 
     def update
-        @comment = current_user.comments.find(params[:id])
+        @comment = Comment.find(params[:id])
 
         if @comment.update(comment_params)
             render :show
@@ -34,7 +34,7 @@ class Api::CommentsController < ApplicationController
     end
 
     def destroy
-        @comment = current_user.comments.find(params[:id])
+        @comment = Comment.find(params[:id])
         unless @comment
             render json: { message: 'Unauthorized' }, status: :unauthorized
             return

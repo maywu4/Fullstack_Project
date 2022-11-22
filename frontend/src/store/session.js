@@ -60,7 +60,8 @@ export const restoreSession = () => async dispatch => {
 };
 
 export const logout = () => async dispatch => {
-    const res = await csrfFetch("/api/session", { method: "DELETE" });
+    // const res = await fetch("/api/session", { method: "DELETE", headers: { 'Content-type': 'application/json' } });
+    const res = await csrfFetch("/api/session", { method: "DELETE"});
     storeCurrentUser(null);
     dispatch(removeCurrentUser());
     return res;
