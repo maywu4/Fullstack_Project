@@ -21,7 +21,7 @@ export const removeComment = (commentId) => ({
     commentId
 })
 
-// export const getComments = ({ comments }) => (comments ? Object.values(comments) : [])
+// export const getPostComments = ({ comments }) => (comments ? Object.values(comments) : [])
 // export const getComment = (commentId) => ({ comments }) => (comments ? comments[commentId] : null)
 
 export const getPostComments = postId => state => (
@@ -42,6 +42,7 @@ export const createComment = (comment) => async dispatch => {
     dispatch(addComment(data.comment));
     dispatch(receiveUser(data.user));
     dispatch(receivePost(data.post));
+
 }
 
 export const updateComment = (comment) => async dispatch => {

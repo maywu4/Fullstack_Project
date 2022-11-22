@@ -9,12 +9,15 @@ import Navigation from '../Navigation';
 import editIcon from './icons8-edit-96.png'
 import copyrightIcon from './icons8-copyright-all-rights-reserved-96.png'
 import './PostShowPage.css'
+import { removeComment, getPostComments } from '../../store/comments';
+import NewCommentForm from '../NewCommentForm';
 
 
 const PostShowPage = () => {
     const dispatch = useDispatch();
     const { postId } = useParams();
     const currentUser = useSelector(state => state.session.user);
+    const comments = useSelector(getPostComments(parseInt(postId)));
 
     useEffect(() => {
         dispatch(fetchPost(postId));
@@ -78,6 +81,12 @@ const PostShowPage = () => {
         )
     }
 
+    const postComments = comments.map((comment) => (<li key={comment.id} />))
+
+    const numComments = comments.filter((comment) => {
+        if (comment.postId === post.id) return true;
+        return false;
+    }).length
 
     return (
         <div className='postShow'>
@@ -100,6 +109,12 @@ const PostShowPage = () => {
                         <p>{ post.description }</p>
                     </div>
                 </div>
+                <div className='comments'>
+                    <ul className='commentsList'>
+                        {postComments}
+                    </ul>
+                    <NewCommentForm postId={postId} />
+                </div>
 
                 { currentUser.id === post.posterId && postUpdateForm() }
 
@@ -110,7 +125,7 @@ const PostShowPage = () => {
                         <span className='smallStats' id='faves'>faves</span>
                     </div>
                     <div id='commentsStats'>
-                        <span>#</span>
+                        <span>{numComments}</span>
                         <span className='smallStats' id='comments'>comments</span>
                     </div>
                     <div id='takenStats'>
