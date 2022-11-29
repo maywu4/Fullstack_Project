@@ -2,9 +2,9 @@ import csrfFetch from "./csrf";
 import { receivePost } from "./posts";
 import { receiveUser } from "./user";
 
-const ADD_COMMENT = '/comments/ADD_COMMENT';
-const ADD_COMMENTS = '/comments/ADD_COMMENTS';
-const REMOVE_COMMENT = '/comments/REMOVE_COMMENT';
+export const ADD_COMMENT = '/comments/ADD_COMMENT';
+export const ADD_COMMENTS = '/comments/ADD_COMMENTS';
+export const REMOVE_COMMENT = '/comments/REMOVE_COMMENT';
 
 export const addComments = (comments) => ({
     type: ADD_COMMENTS,
@@ -21,7 +21,7 @@ export const removeComment = (commentId) => ({
     commentId
 })
 
-// export const getComments = ({ comments }) => (comments ? Object.values(comments) : [])
+export const getComments = ({ comments }) => (comments ? Object.values(comments) : [])
 // export const getComment = (commentId) => ({ comments }) => (comments ? comments[commentId] : null)
 
 export const getPostComments = postId => state => (
@@ -33,6 +33,12 @@ export const getPostComments = postId => state => (
         }))
 );
 
+export const fetchComments = () => async dispatch => {
+    const res = await csrfFetch('/api/comments');
+    const data = await res.json();
+    dispatch(addComments(data.comments))
+}
+
 export const createComment = (comment) => async dispatch => {
     const res = await csrfFetch("/api/comments", {
         method: "POST",
@@ -40,9 +46,8 @@ export const createComment = (comment) => async dispatch => {
     });
     const data = await res.json();
     dispatch(addComment(data.comment));
-    // dispatch(receiveUser(data.user));
-    // dispatch(receivePost(data.post));
-
+    dispatch(receiveUser(data.user));
+    dispatch(receivePost(data.post));
 }
 
 export const updateComment = (comment) => async dispatch => {

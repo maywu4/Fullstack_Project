@@ -13,7 +13,7 @@ const NewCommentForm = ({postId}) => {
     }
 
     return (
-        <form className='commentForm' onSubmit={ handleSubmit}>
+        <form className='commentForm' onSubmit={ handleSubmit }>
             <label>
                 <textarea onChange={e => setCommentBody(e.target.value)} placeholder='Add a comment' required></textarea>
             </label>

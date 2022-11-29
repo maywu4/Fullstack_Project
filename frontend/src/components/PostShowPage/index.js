@@ -9,7 +9,7 @@ import Navigation from '../Navigation';
 import editIcon from './icons8-edit-96.png'
 import copyrightIcon from './icons8-copyright-all-rights-reserved-96.png'
 import './PostShowPage.css'
-import { removeComment, getPostComments } from '../../store/comments';
+import { removeComment, getPostComments, fetchComments, getComments } from '../../store/comments';
 import NewCommentForm from '../NewCommentForm';
 
 
@@ -17,10 +17,12 @@ const PostShowPage = () => {
     const dispatch = useDispatch();
     const { postId } = useParams();
     const currentUser = useSelector(state => state.session.user);
-    const comments = useSelector(getPostComments(parseInt(postId)));
+    // const comments = useSelector(getPostComments(postId));
+    const comments = useSelector(getComments);
 
     useEffect(() => {
         dispatch(fetchPost(postId));
+        dispatch(fetchComments());
     }, []);
 
     const post = useSelector(getPost(postId));
@@ -88,6 +90,8 @@ const PostShowPage = () => {
         return false;
     }).length
 
+
+    // console.log(postComments)
     return (
         <div className='postShow'>
             <Navigation />

@@ -1,6 +1,11 @@
 class Api::CommentsController < ApplicationController
     wrap_parameters include: Comment.attribute_names + ['postId'] + ['authorId'] + ['body']  
 
+    def index
+        @comments = Comment.all
+        render :index
+    end
+
     def create
         @comment = Comment.new(comment_params)
 
