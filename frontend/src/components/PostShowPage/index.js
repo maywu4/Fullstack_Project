@@ -9,8 +9,9 @@ import Navigation from '../Navigation';
 import editIcon from './icons8-edit-96.png'
 import copyrightIcon from './icons8-copyright-all-rights-reserved-96.png'
 import './PostShowPage.css'
-import { removeComment, getPostComments, fetchComments, getComments } from '../../store/comments';
-import NewCommentForm from '../NewCommentForm';
+import { getComments } from '../../store/comments';
+// import NewCommentForm from '../NewCommentForm';
+import CommentSection from '../CommentSection';
 
 
 const PostShowPage = () => {
@@ -22,7 +23,6 @@ const PostShowPage = () => {
 
     useEffect(() => {
         dispatch(fetchPost(postId));
-        dispatch(fetchComments());
     }, []);
 
     const post = useSelector(getPost(postId));
@@ -83,7 +83,7 @@ const PostShowPage = () => {
         )
     }
 
-    const postComments = comments.map((comment) => (<li key={comment.id} />))
+    // const postComments = comments.map((comment) => (<li key={comment.id} />))
 
     const numComments = comments.filter((comment) => {
         if (comment.postId === post.id) return true;
@@ -113,12 +113,7 @@ const PostShowPage = () => {
                         <p>{ post.description }</p>
                     </div>
                 </div>
-                <div className='comments'>
-                    <ul className='commentsList'>
-                        {postComments}
-                    </ul>
-                    <NewCommentForm postId={postId} />
-                </div>
+                <CommentSection postId={postId}/>
 
                 { currentUser.id === post.posterId && postUpdateForm() }
 
