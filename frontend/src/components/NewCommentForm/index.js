@@ -9,8 +9,8 @@ const NewCommentForm = ({postId}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setCommentBody("")
         dispatch(createComment({postId: postId, authorId: currentUser.id, body: commentBody}))
+        setCommentBody("")
     }
 
     return (
