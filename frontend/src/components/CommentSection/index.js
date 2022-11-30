@@ -18,7 +18,6 @@ const CommentSection = ({postId}) => {
         const authorProfileLink = comment ? `/people/${comment.authorId}` : null
         
         // console.log(parseInt(postId, 10) === comment.postId)
-        console.log(comment)
 
         if (comment.postId === parseInt(postId, 10)) { 
             return (
@@ -32,15 +31,18 @@ const CommentSection = ({postId}) => {
                 </li>
             )
         } else {
-            return "this is not right";
+            return null;
         }
     })
     
     
     return (
         <div className='comments'>
-            <ul>{postComments}</ul>
-            <NewCommentForm postId={postId} />
+            <ul>{postComments}
+                <li>
+                    <NewCommentForm postId={postId} />
+                </li>
+            </ul>
         </div>
     )
 }

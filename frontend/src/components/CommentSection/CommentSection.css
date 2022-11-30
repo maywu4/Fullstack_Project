@@ -1,0 +1,23 @@
+.comments>ul {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.comments>ul>li {
+    padding: 5px 0px 5px 40px;
+    margin: 5px 0px 0px 0px;
+}
+.comments>ul>li:hover {
+    background-color: white;
+}
+
+.comments a {
+    color: #799fcbff;
+    text-decoration: none;
+}
+
+.comments a:hover {
+    text-decoration: underline;
+}
+

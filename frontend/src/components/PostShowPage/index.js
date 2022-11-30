@@ -99,21 +99,23 @@ const PostShowPage = () => {
                 <img src={post.picture} alt="" />
             </div>
             <div id='postShowBottom'>
-                <div className='postShowInfo'>
-                    <div className='postInfoTop'>
-                        {/* <a href={posterProfileLink}>
-                            <img id='posterProfilePic' src={post.poster.picture} alt="" />
-                        </a> */}
-                        <a href={posterProfileLink}>
-                            {post.poster.username}
-                        </a>
-                        <h6> {post.title} </h6>
+                <div id='postShowLeft'>
+                    <div className='postShowInfo'>
+                        <div className='postInfoTop'>
+                            {/* <a href={posterProfileLink}>
+                                <img id='posterProfilePic' src={post.poster.picture} alt="" />
+                            </a> */}
+                            <a href={posterProfileLink}>
+                                {post.poster.username}
+                            </a>
+                            <h6> {post.title} </h6>
+                        </div>
+                        <div className='postInfoBottom'>
+                            <p>{ post.description }</p>
+                        </div>
                     </div>
-                    <div className='postInfoBottom'>
-                        <p>{ post.description }</p>
-                    </div>
+                    <CommentSection postId={postId}/>
                 </div>
-                <CommentSection postId={postId}/>
 
                 { currentUser.id === post.posterId && postUpdateForm() }
 
