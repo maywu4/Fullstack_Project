@@ -121,13 +121,15 @@ const PostShowPage = () => {
 
                 { currentUser.id === post.posterId && deletePostItem()}
                 <div id='postStats'>
-                    <div id='faveStats'>
-                        <span>#</span>
-                        <span className='smallStats' id='faves'>faves</span>
-                    </div>
-                    <div id='commentsStats'>
-                        <span>{numComments}</span>
-                        <span className='smallStats' id='comments'>comments</span>
+                    <div className='featureStats'>
+                        <div id='faveStats'>
+                            <span>#</span>
+                            <span className='smallStats' id='faves'>faves</span>
+                        </div>
+                        <div id='commentsStats'>
+                            <span>{numComments}</span>
+                            <span className='smallStats' id='comments'>{ numComments === 1 ? 'comment' : 'comments'}</span>
+                        </div>
                     </div>
                     <div id='takenStats'>
                         <span className='smallStats'>Created {post.createdAt}</span>
