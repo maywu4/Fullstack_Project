@@ -9,14 +9,14 @@ const NewCommentForm = ({postId}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createComment({postId: postId, authorId: currentUser.id, body: commentBody}))
         setCommentBody("")
+        dispatch(createComment({postId: postId, authorId: currentUser.id, body: commentBody}))
     }
 
     return (
         <form className='commentForm' onSubmit={ handleSubmit }>
             <label>
-                <textarea onChange={e => setCommentBody(e.target.value)} placeholder='Add a comment' required></textarea>
+                <textarea onChange={e => setCommentBody(e.target.value)} placeholder='Add a comment' value={commentBody} required></textarea>
             </label>
             <input type="submit" value="Comment" />
         </form>

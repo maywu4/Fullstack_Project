@@ -1,6 +1,4 @@
 import csrfFetch from "./csrf";
-import { receivePost } from "./posts";
-import { receiveUser } from "./user";
 
 export const ADD_COMMENT = '/comments/ADD_COMMENT';
 export const ADD_COMMENTS = '/comments/ADD_COMMENTS';
@@ -46,8 +44,8 @@ export const createComment = (comment) => async dispatch => {
     });
     const data = await res.json();
     dispatch(addComment(data.comment));
-    dispatch(receiveUser(data.user));
-    dispatch(receivePost(data.post));
+    // dispatch(receiveUser(data.user));
+    // dispatch(receivePost(data.post));
 }
 
 export const updateComment = (comment) => async dispatch => {
