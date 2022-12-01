@@ -117,11 +117,9 @@ const PostShowPage = () => {
                     <CommentSection postId={postId}/>
                 </div>
 
-                { currentUser.id === post.posterId && postUpdateForm() }
-
-                { currentUser.id === post.posterId && deletePostItem()}
-                <div id='postStats'>
-                    <div className='featureStats'>
+                <div id='postShowRight'>
+                    <div id='postStats'>
+                        
                         <div id='faveStats'>
                             <span>#</span>
                             <span className='smallStats' id='faves'>faves</span>
@@ -130,17 +128,21 @@ const PostShowPage = () => {
                             <span>{numComments}</span>
                             <span className='smallStats' id='comments'>{ numComments === 1 ? 'comment' : 'comments'}</span>
                         </div>
-                    </div>
-                    <div id='takenStats'>
-                        <span className='smallStats'>Created {post.createdAt}</span>
-                        <br />
-                        <div id='copyright'>
-                            <img src={copyrightIcon} alt="" />
-                            <span className='smallStats'>All rights reserved.</span>
+                        
+                        <div id='takenStats'>
+                            <span className='smallStats'>Created {post.createdAt}</span>
+                            <br />
+                            <div id='copyright'>
+                                <img src={copyrightIcon} alt="" />
+                                <span className='smallStats'>All rights reserved.</span>
+                            </div>
                         </div>
                     </div>
-
+                    { currentUser.id === post.posterId && postUpdateForm() }
+                    { currentUser.id === post.posterId && deletePostItem()}
                 </div>
+
+
             </div>
 
         </div>

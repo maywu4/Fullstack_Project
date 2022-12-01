@@ -20,12 +20,25 @@
 
 #postShowBottom {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
     background-color: #f3f5f6;
     padding-left: 15vw;
     padding-right: 15vw;
     flex-wrap: wrap;
+}
+
+#postShowLeft, 
+#postShowRight {
+    margin-top: 16px;
+}
+
+#postShowLeft {
+    margin-right: 70px;
+    width: 550px;
+}
+
+#postShowRight {
+    width: 350px;
 }
 
 
@@ -43,13 +56,29 @@
     border-radius: 5px;
 }
 
-#postUpdate input,
-#postDelete button,
-#postUpdate button {
+#postDelete {
+    width: 40%;
+}
+
+#postUpdate input {
     width: 90%;
     height: 100%;
     border-style: none;
     cursor: pointer;
+    border-radius: 5px;
+}
+
+#postUpdate button, 
+#postDelete button {
+    width: 128px;
+    height: 36px;
+    border-style: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+
 }
 
 #postUpdate button {
@@ -114,22 +143,11 @@
 
 #postStats {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     margin-top: 10px;
+    border-bottom: 1px solid #cfd6d9;;
 }
-
-.featureStats {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    margin-top: 10px;
-    border-bottom: 1px solid #cfd6d9;
-}
-
 
 
 #faveStats,
