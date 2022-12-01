@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getUser, fetchUser, updateUser } from "../../store/user";
@@ -60,7 +60,7 @@ const ProfilePage = (props) => {
 
     const photostreamItems = posts.map((post) => {
         if (post.posterId === user.id) {
-            return (<li key={post.id}><img src={post.picture} alt="" /></li>)
+            return (<li key={post.id}><NavLink to={`/photos/${post.id}`}><img src={post.picture} alt="" /></NavLink></li>)
         }
     });
 

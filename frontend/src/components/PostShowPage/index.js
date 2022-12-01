@@ -12,6 +12,7 @@ import './PostShowPage.css'
 import { getComments } from '../../store/comments';
 // import NewCommentForm from '../NewCommentForm';
 import CommentSection from '../CommentSection';
+// import { fetchUser, getUser } from '../../store/user';
 
 
 const PostShowPage = () => {
@@ -20,13 +21,14 @@ const PostShowPage = () => {
     const currentUser = useSelector(state => state.session.user);
     // const comments = useSelector(getPostComments(postId));
     const comments = useSelector(getComments);
-
+    
     useEffect(() => {
         dispatch(fetchPost(postId));
+        // dispatch(fetchUser(post.posterId));
     }, []);
-
+    
     const post = useSelector(getPost(postId));
-    // const postPoster = useSelector(getUser(post.poster.id))
+    // const postPoster = useSelector(getUser(post.posterId))
     const [title, setTitle] = useState( post ? post.title : '' );
     const [description, setDescription] = useState(post ? post.description : '');
     const posterProfileLink = post ? `/people/${post.posterId}` : null
@@ -91,7 +93,7 @@ const PostShowPage = () => {
     }).length
 
 
-    // console.log(postComments)
+    console.log(post.poster)
     return (
         <div className='postShow'>
             <Navigation />
