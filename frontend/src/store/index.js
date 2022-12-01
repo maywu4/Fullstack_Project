@@ -4,6 +4,7 @@ import sessionReducer from './session';
 import userReducer from './user';
 import postsReducer from './posts';
 import commentsReducer from './comments';
+import likesReducer from './likes';
 
 
 
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     session: sessionReducer,
     users: userReducer,
     posts: postsReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
+    likes: likesReducer
 });
 
 let enhancer;
