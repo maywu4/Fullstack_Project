@@ -1,0 +1,12 @@
+#commentFormSubmit, #commentUpdateSubmit {
+    width: 128px;
+    height: 36px;
+    border-style: none;
+    cursor: pointer;
+    background-color: #799fcbff;
+    color: white;
+    margin: 10px 5px 10px auto;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+}

@@ -18,7 +18,7 @@ const CommentSection = ({postId}) => {
     },[])
 
     
-    const postComments = comments.map((comment, i) => ( <CommentItem comment={comment} postId={postId} i={i}/> ))
+    const postComments = comments.map((comment, i) => ( <CommentItem comment={comment} postId={postId} key={i}/> ))
         
     
     return (

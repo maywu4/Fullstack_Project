@@ -5,7 +5,7 @@ import editIcon from './icons8-edit-24.png'
 import deleteIcon from './icons8-delete-trash-24.png'
 
 
-const CommentItem = ({comment, postId, i}) => {
+const CommentItem = ({comment, postId}) => {
     const dispatch = useDispatch();
     const [body, setBody] = useState(null);
     const [editComment, setEditComment] = useState(false);
@@ -15,17 +15,20 @@ const CommentItem = ({comment, postId, i}) => {
 
     // console.log(commentUser)
 
-    const handleEdit = (e) => {
+
+    const showEdit = (e) => {
         if (editComment) {
             setEditComment(false);
         } else {
             setEditComment(true);
         }
-        const handleUpdate = (e) => {
-            e.preventDefault();
-            comment.body = body;
-            dispatch(updateComment(comment));
-        }
+    }
+
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        comment.body = body;
+        dispatch(updateComment(comment));
+        setEditComment(false);
     }
 
 
@@ -33,22 +36,34 @@ const CommentItem = ({comment, postId, i}) => {
         dispatch(deleteComment(comment.id))
     }
 
-    console.log(comment.postId)
+    const editBodyForm = () => {
+        return (
+            <form className='editCommentForm' onSubmit={handleUpdate}>
+                <label>
+                    <textarea value={body !== null ? body : comment.body } onChange={e => setBody(e.target.value)} ></textarea>
+                </label>
+                <br />
+                <input id='commentUpdateSubmit' type="submit" value="Done" />
+            </form>
+        )
+    }
+
+    
     if (comment.postId === parseInt(postId, 10)) {
         return (
-            <li key={i} >
-                <div>
+            <li>
+                <div >
                     <div id='commentTop'>
                         <a href={authorProfileLink}>
                             {comment.author.username}
                         </a>
                         {/* {hover && changeComment(comment)} */}
                         <div>
-                            {comment.authorId === currentUser.id ? <img className='commentIcons' src={editIcon} alt="edit-icon" onClick={handleEdit} /> : null}
+                            {comment.authorId === currentUser.id ? <img className='commentIcons' src={editIcon} alt="edit-icon" onClick={showEdit} /> : null}
                             {comment.authorId === currentUser.id ? <img className='commentIcons' src={deleteIcon} alt="delete-icon" onClick={handleDelete} /> : null}
                         </div>
                     </div>
-                    <p> {editComment ? <textarea value={body !== null ? body : comment.body} onChange={e => setBody(e.target.value)} ></textarea> : comment.body} </p>
+                    <p> {editComment ? editBodyForm() : comment.body} </p>
 
                 </div>
             </li>

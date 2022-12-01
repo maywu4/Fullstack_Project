@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { createComment } from "../../store/comments";
+import './NewCommentForm.css'
 
 const NewCommentForm = ({postId}) => {
     const [commentBody, setCommentBody] = useState("");
@@ -19,7 +20,7 @@ const NewCommentForm = ({postId}) => {
                 <textarea onChange={e => setCommentBody(e.target.value)} placeholder='Add a comment' value={commentBody} required></textarea>
             </label>
             <br />
-            <input type="submit" value="Comment" />
+            <input id='commentFormSubmit' type="submit" value="Comment" />
         </form>
     )
 }
