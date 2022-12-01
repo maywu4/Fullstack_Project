@@ -5,12 +5,13 @@
 }
 
 .comments>ul>li {
-    padding: 10px 5px 10px 40px;
+    padding: 10px 5px 10px 5px;
     margin: 5px 5px 0px 0px;
     border-radius: 2px;
 }
 .comments>ul>li:hover {
     background-color: white;
+    border-radius: 5px;
 
 }
 
@@ -23,10 +24,18 @@
     text-decoration: underline;
 }
 
-#commentTop {
+#commentBody {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-left: 10px;
+} 
+#commentOverview {
     display: flex;
     justify-content: space-between;
 }
+
 
 .commentIcons {
     width: 1rem;
@@ -35,4 +44,18 @@
 
 .commentIcons:hover {
     cursor: pointer;
+}
+
+.commentorProfilePic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+#commentBody>a {
+    font-size: 15px;
+}
+
+#commentBody>div{
+    font-size: 14px;
 }

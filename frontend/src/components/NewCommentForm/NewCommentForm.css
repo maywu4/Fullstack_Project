@@ -11,15 +11,34 @@
     font-weight: 600;
 }
 
+.commentForm, 
+.editCommentForm {
+    width: 90%;
+}
+
+#commentBody>label,
+#commentBody>form, 
+#commentBody>div {
+    width: 100%;
+}
+
+
 .commentForm textarea, 
 .editCommentForm textarea {
-    margin-top: 5px;
     width: 100%;
     height: 52px;
+}
+
+.commentForm textarea {
+    margin-left: 10px;
 }
 
 .commentForm, 
 .editCommentForm {
     display: flex;
     flex-direction: column;
+}
+
+#newCommentSection {
+    display: flex;
 }

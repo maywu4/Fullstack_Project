@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateComment, deleteComment } from '../../store/comments';
 import editIcon from './icons8-edit-24.png'
 import deleteIcon from './icons8-delete-trash-24.png'
+import { fetchUser, getUser } from '../../store/user';
 
 
 const CommentItem = ({comment, postId}) => {
@@ -11,9 +12,14 @@ const CommentItem = ({comment, postId}) => {
     const [editComment, setEditComment] = useState(false);
     const currentUser = useSelector(state => state.session.user);
     const authorProfileLink = comment ? `/people/${comment.authorId}` : null
-    // const commentUser = useSelector(getUser(comment.authorId));
+    const commentUser = useSelector(getUser(comment.authorId));
 
-    // console.log(commentUser)
+    // console.log(commentUser.picture)
+    // console.log(commentUser ? commentUser.picture : null)
+
+    useEffect(() => {
+        dispatch(fetchUser(comment.authorId))
+    },[])
 
 
     const showEdit = (e) => {
@@ -47,22 +53,23 @@ const CommentItem = ({comment, postId}) => {
         )
     }
 
-    
     if (comment.postId === parseInt(postId, 10)) {
         return (
             <li>
-                <div >
-                    <div id='commentTop'>
+                <div id='commentOverview'>
+                    <a href={authorProfileLink}><img className='commentorProfilePic' src={commentUser ? commentUser.picture : null} alt="user-profile-pic" /></a>
+                    <div id='commentBody'>
                         <a href={authorProfileLink}>
                             {comment.author.username}
                         </a>
-                        {/* {hover && changeComment(comment)} */}
-                        <div>
-                            {comment.authorId === currentUser.id ? <img className='commentIcons' src={editIcon} alt="edit-icon" onClick={showEdit} /> : null}
-                            {comment.authorId === currentUser.id ? <img className='commentIcons' src={deleteIcon} alt="delete-icon" onClick={handleDelete} /> : null}
-                        </div>
+                        <div> {editComment ? editBodyForm() : comment.body} </div>
                     </div>
-                    <p> {editComment ? editBodyForm() : comment.body} </p>
+                        {/* {hover && changeComment(comment)} */}
+                    <div id='commentEdits'>
+                        {comment.authorId === currentUser.id ? <img className='commentIcons' src={editIcon} alt="edit-icon" onClick={showEdit} /> : null}
+                        {comment.authorId === currentUser.id ? <img className='commentIcons' src={deleteIcon} alt="delete-icon" onClick={handleDelete} /> : null}
+                    </div>
+
 
                 </div>
             </li>
