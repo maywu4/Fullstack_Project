@@ -19,7 +19,6 @@ const NewCommentForm = ({postId}) => {
             <label>
                 <textarea onChange={e => setCommentBody(e.target.value)} placeholder='Add a comment' value={commentBody} required></textarea>
             </label>
-            <br />
             <input id='commentFormSubmit' type="submit" value="Comment" />
         </form>
     )

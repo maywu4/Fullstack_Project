@@ -42,7 +42,6 @@ const CommentItem = ({comment, postId}) => {
                 <label>
                     <textarea value={body !== null ? body : comment.body } onChange={e => setBody(e.target.value)} ></textarea>
                 </label>
-                <br />
                 <input id='commentUpdateSubmit' type="submit" value="Done" />
             </form>
         )
