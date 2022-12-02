@@ -155,7 +155,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-    border-bottom: 1px solid #cfd6d9;;
+    border-bottom: 1px solid #cfd6d9;
 }
 
 
@@ -180,4 +180,17 @@
 .postShowInfo {
     padding: 0px 0px 15px 0px ;
     border-bottom: 1px solid #cfd6d9;
+}
+
+
+#likesSummary {
+    display: flex;
+    padding: 1rem 0.75rem;
+    border-bottom: 1px solid #cfd6d9;
+    font-size: 15px;
+}
+
+.likerUsername {
+    text-decoration: none;
+    color: #799fcbff;
 }

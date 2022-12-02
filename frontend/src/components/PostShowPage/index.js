@@ -17,6 +17,8 @@ import LikeComponent from '../LikeComponent';
 import { fetchLikes, getLikes } from '../../store/likes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons'
 
 
 const PostShowPage = () => {
@@ -92,6 +94,21 @@ const PostShowPage = () => {
 
     // const postComments = comments.map((comment) => (<li key={comment.id} />))
 
+    const postLikes = likes.filter(like => like.postId === parseInt(postId, 10));
+
+    const likesSummary = postLikes.map((like, i) => {
+        return (
+            <div key={like.id}>
+                {i === 0 ? 
+                    <NavLink className='likerUsername' to={`/people/${like.liker.id}`}>{like.liker.username} </NavLink> 
+                : 
+                    <NavLink className='likerUsername' to={`/people/${like.liker.id}`}>, {like.liker.username} </NavLink> 
+                }
+            </div>
+        )
+        
+    })
+
     const numComments = comments.filter((comment) => {
         if (comment.postId === post.id) return true;
         return false;
@@ -103,7 +120,6 @@ const PostShowPage = () => {
         return false;
     }).length
 
-    console.log(post.likes)
     
     return (
         <div className='postShow'>
@@ -131,6 +147,14 @@ const PostShowPage = () => {
                             <p>{ post.description }</p>
                         </div>
                     </div>
+                    <div id='likesSummary'> 
+                        {post.likes.length !== 0 ? <FontAwesomeIcon icon={faStar} /> : <FontAwesomeIcon icon={emptyStar} />}
+                        &nbsp; 
+                        {post.likes.length !== 0 ? likesSummary : 'No faves yet' }
+                        &nbsp; 
+                        {post.likes.length !== 0 ? 'faved this': null}
+                        
+                    </div>
                     <CommentSection postId={postId}/>
                 </div>
 
@@ -139,7 +163,7 @@ const PostShowPage = () => {
                         
                         <div id='faveStats'>
                             <span>{numLikes}</span>
-                            <span className='smallStats' id='faves'>{numLikes=== 1 ? 'like' : 'likes'}</span>
+                            <span className='smallStats' id='faves'>{numLikes=== 1 ? 'fave' : 'faves'}</span>
                         </div>
                         <div id='commentsStats'>
                             <span>{numComments}</span>
