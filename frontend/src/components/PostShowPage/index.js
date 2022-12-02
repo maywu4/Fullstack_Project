@@ -14,6 +14,7 @@ import { getComments } from '../../store/comments';
 import CommentSection from '../CommentSection';
 // import { fetchUser, getUser } from '../../store/user';
 import LikeComponent from '../LikeComponent';
+import { fetchLikes, getLikes } from '../../store/likes';
 
 
 const PostShowPage = () => {
@@ -22,6 +23,7 @@ const PostShowPage = () => {
     const currentUser = useSelector(state => state.session.user);
     // const comments = useSelector(getPostComments(postId));
     const comments = useSelector(getComments);
+    const likes = useSelector(getLikes);
     
     useEffect(() => {
         dispatch(fetchPost(postId));
@@ -94,13 +96,17 @@ const PostShowPage = () => {
     }).length
 
 
-    console.log(post.poster)
+    const numLikes = likes.filter((like) => {
+        if (like.postId === parseInt(postId, 10)) return true;
+        return false;
+    }).length
+    
     return (
         <div className='postShow'>
             <Navigation />
             <div className='postDisplay'>
                 <img src={post.picture} alt="" />
-                <LikeComponent />
+                <LikeComponent currentUser={currentUser} postId={postId} />
             </div>
             <div id='postShowBottom'>
                 <div id='postShowLeft'>
@@ -125,8 +131,8 @@ const PostShowPage = () => {
                     <div id='postStats'>
                         
                         <div id='faveStats'>
-                            <span>#</span>
-                            <span className='smallStats' id='faves'>faves</span>
+                            <span>{numLikes}</span>
+                            <span className='smallStats' id='faves'>{numLikes=== 1 ? 'like' : 'likes'}</span>
                         </div>
                         <div id='commentsStats'>
                             <span>{numComments}</span>

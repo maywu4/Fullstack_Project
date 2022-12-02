@@ -1,0 +1,13 @@
+.postLikeComponent:hover {
+    cursor: pointer;
+}
+.postLikeComponent {
+    position: absolute;
+    bottom: 10px;
+    right: 18px;
+}
+
+.postLikeComponent svg {
+    width: 24px;
+    height: 24px;
+}
