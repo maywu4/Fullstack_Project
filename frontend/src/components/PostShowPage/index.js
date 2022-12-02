@@ -13,6 +13,7 @@ import { getComments } from '../../store/comments';
 // import NewCommentForm from '../NewCommentForm';
 import CommentSection from '../CommentSection';
 // import { fetchUser, getUser } from '../../store/user';
+import LikeComponent from '../LikeComponent';
 
 
 const PostShowPage = () => {
@@ -99,6 +100,7 @@ const PostShowPage = () => {
             <Navigation />
             <div className='postDisplay'>
                 <img src={post.picture} alt="" />
+                <LikeComponent />
             </div>
             <div id='postShowBottom'>
                 <div id='postShowLeft'>
