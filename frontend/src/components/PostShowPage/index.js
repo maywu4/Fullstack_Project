@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPost, fetchPost, updatePost, deletePost } from '../../store/posts';
 // import { getUser } from '../../store/user';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import Navigation from '../Navigation';
 import editIcon from './icons8-edit-96.png'
 import copyrightIcon from './icons8-copyright-all-rights-reserved-96.png'
@@ -15,6 +15,8 @@ import CommentSection from '../CommentSection';
 // import { fetchUser, getUser } from '../../store/user';
 import LikeComponent from '../LikeComponent';
 import { fetchLikes, getLikes } from '../../store/likes';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 
 const PostShowPage = () => {
@@ -105,6 +107,9 @@ const PostShowPage = () => {
         <div className='postShow'>
             <Navigation />
             <div className='postDisplay'>
+                <NavLink id='linkHomepage' to={'/homepage'}>
+                    <FontAwesomeIcon icon={faArrowLeft} inverse /> Back to homepage
+                </NavLink>
                 <img src={post.picture} alt="" />
                 <LikeComponent currentUser={currentUser} postId={postId} />
             </div>

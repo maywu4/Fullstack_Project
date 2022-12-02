@@ -13,6 +13,14 @@
     height: 85%;
 }
 
+#linkHomepage {
+    position: absolute;
+    top: 24px;
+    left: 20px;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+}
 /* #posterProfilePic {
     width: 30px;
     height: 30px;
