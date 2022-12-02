@@ -102,6 +102,8 @@ const PostShowPage = () => {
         if (like.postId === parseInt(postId, 10)) return true;
         return false;
     }).length
+
+    console.log(post.likes)
     
     return (
         <div className='postShow'>
