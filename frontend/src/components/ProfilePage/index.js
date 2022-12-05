@@ -119,6 +119,8 @@ const ProfilePage = (props) => {
     }).length;
 
     
+    console.log(user.likes)
+    
     return (
         <div className="userProfile">
             <Navigation user={user} setSelectTab={setSelectTab} />
