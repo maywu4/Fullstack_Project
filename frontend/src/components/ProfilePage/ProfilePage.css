@@ -117,7 +117,7 @@
 
 .menuSelection {
     width: auto;
-    height: 50vh;
+    height: auto;
     background-color:#f3f5f6;
     display: flex;
     justify-content: center;
