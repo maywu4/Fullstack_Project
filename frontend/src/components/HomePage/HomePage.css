@@ -28,6 +28,7 @@
 .postPosterInfo,
 .postDetails {
     padding: 12px;
+    display: flex;
 }
 
 .postPosterInfo a:link,
@@ -60,5 +61,9 @@
 .postDetails h6,
 .postDetails div {
     font-size: 14px;
+}
+
+.postPosterInfo img {
+    padding-right: 10px;
 }
 

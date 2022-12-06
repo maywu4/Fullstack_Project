@@ -120,7 +120,7 @@ const PostShowPage = () => {
         return false;
     }).length
 
-    
+
     return (
         <div className='postShow'>
             <Navigation />
@@ -137,6 +137,9 @@ const PostShowPage = () => {
                         <div className='postInfoTop'>
                             {/* <a href={posterProfileLink}>
                                 <img id='posterProfilePic' src={post.poster.picture} alt="" />
+                            </a> */}
+                            {/* <a href={posterProfileLink}>
+                                <img className='commentorProfilePic' src={post ? postPoster.picture : null} alt="user-profile-pic" />
                             </a> */}
                             <a href={posterProfileLink}>
                                 {post.poster.username}
