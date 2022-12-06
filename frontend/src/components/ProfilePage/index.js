@@ -9,6 +9,8 @@ import Navigation from "../Navigation";
 // import profilePic from './profilePic.png';
 import './ProfilePage.css'
 import { getPosts, fetchPosts } from "../../store/posts";
+import { fetchLikes } from "../../store/likes";
+import FavesItem from "./FavesItem";
 
 const ProfilePage = (props) => {
     const dispatch = useDispatch();
@@ -18,8 +20,10 @@ const ProfilePage = (props) => {
     useEffect(() => {
         dispatch(fetchUser(userId));
         dispatch(fetchPosts());
+        dispatch(fetchLikes());
     }, []);
     const user = useSelector(getUser(userId));
+    const userFavorites = user ? user.likes : null
     const currentUser = useSelector(state => state.session.user);
     const [currentAbout, setCurrentAbout] = useState(null);
 
@@ -64,6 +68,12 @@ const ProfilePage = (props) => {
         }
     });
 
+    const userFaveItems = userFavorites.map((like) => {
+        return (
+            <FavesItem key={like.id} like={like}></FavesItem>
+        )
+    })
+
     const photostreamSelection = (
         <div className="selections" id="photostreamSelection">
             <ul>
@@ -77,13 +87,7 @@ const ProfilePage = (props) => {
         <div className="selections" id="favesSelection">
             <ul>
                 {/* add user favorited/liked photos */}
-                {/* {user.favorites.map(photo => <li key={photo}>{photo}</li>)} */}
-                {/* <li><img src="https://picsum.photos/206/206" alt="fave 1" /></li>
-                <li><img src="https://picsum.photos/206/206" alt="fave 2" /></li>
-                <li><img src="https://picsum.photos/206/206" alt="fave 3" /></li>
-                <li><img src="https://picsum.photos/206/206" alt="fave 4" /></li>
-                <li><img src="https://picsum.photos/206/206" alt="fave 5" /></li>
-                <li><img src="https://picsum.photos/206/206" alt="fave 6" /></li> */}
+                {user ? userFaveItems : null}
             </ul>
         </div>
     );
@@ -118,8 +122,8 @@ const ProfilePage = (props) => {
         return false;
     }).length;
 
+    const numFaves = userFavorites.length;
     
-    console.log(user.likes)
     
     return (
         <div className="userProfile">
@@ -143,6 +147,7 @@ const ProfilePage = (props) => {
 
                         </ul>
                         <ul id="userInfoRight">
+                            <li> {numFaves} Faves</li>
                             <li> {numPhotos} Photos</li>
                             <li> Joined {user.createdAt.slice(0, 4)}</li>
                         </ul>
