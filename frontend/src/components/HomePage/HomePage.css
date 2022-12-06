@@ -67,3 +67,7 @@
     padding-right: 10px;
 }
 
+.postDetails {
+    flex-direction: column;
+}
+

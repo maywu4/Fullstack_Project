@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPost, fetchPost, updatePost, deletePost } from '../../store/posts';
 // import { getUser } from '../../store/user';
-import { Redirect, NavLink } from 'react-router-dom';
+import { Redirect, NavLink, useHistory } from 'react-router-dom';
 import Navigation from '../Navigation';
 import editIcon from './icons8-edit-96.png'
 import copyrightIcon from './icons8-copyright-all-rights-reserved-96.png'
@@ -12,7 +12,7 @@ import './PostShowPage.css'
 import { getComments } from '../../store/comments';
 // import NewCommentForm from '../NewCommentForm';
 import CommentSection from '../CommentSection';
-// import { fetchUser, getUser } from '../../store/user';
+import { fetchUser, getUser } from '../../store/user';
 import LikeComponent from '../LikeComponent';
 import { fetchLikes, getLikes } from '../../store/likes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -23,6 +23,7 @@ import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons'
 
 const PostShowPage = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { postId } = useParams();
     const currentUser = useSelector(state => state.session.user);
     // const comments = useSelector(getPostComments(postId));
@@ -31,11 +32,11 @@ const PostShowPage = () => {
     
     useEffect(() => {
         dispatch(fetchPost(postId));
-        // dispatch(fetchUser(post.posterId));
+        dispatch(fetchUser(post.posterId));
     }, []);
     
     const post = useSelector(getPost(postId));
-    // const postPoster = useSelector(getUser(post.posterId))
+    const postPoster = useSelector(getUser(post.posterId))
     const [title, setTitle] = useState( post ? post.title : '' );
     const [description, setDescription] = useState(post ? post.description : '');
     const posterProfileLink = post ? `/people/${post.posterId}` : null
@@ -80,6 +81,7 @@ const PostShowPage = () => {
 
     const handleDelete = (e) => {
         dispatch(deletePost(postId));
+        history.push('/')
     }
 
     const deletePostItem = () => {
@@ -138,9 +140,9 @@ const PostShowPage = () => {
                             {/* <a href={posterProfileLink}>
                                 <img id='posterProfilePic' src={post.poster.picture} alt="" />
                             </a> */}
-                            {/* <a href={posterProfileLink}>
+                            <a href={posterProfileLink}>
                                 <img className='commentorProfilePic' src={post ? postPoster.picture : null} alt="user-profile-pic" />
-                            </a> */}
+                            </a>
                             <a href={posterProfileLink}>
                                 {post.poster.username}
                             </a>
@@ -151,11 +153,11 @@ const PostShowPage = () => {
                         </div>
                     </div>
                     <div id='likesSummary'> 
-                        {post.likes.length !== 0 ? <FontAwesomeIcon icon={faStar} /> : <FontAwesomeIcon icon={emptyStar} />}
+                        {numLikes !== 0 ? <FontAwesomeIcon icon={faStar} /> : <FontAwesomeIcon icon={emptyStar} />}
                         &nbsp; 
-                        {post.likes.length !== 0 ? likesSummary : 'No faves yet' }
+                        {numLikes !== 0 ? likesSummary : 'No faves yet' }
                         &nbsp; 
-                        {post.likes.length !== 0 ? 'faved this': null}
+                        {numLikes !== 0 ? 'faved this': null}
                         
                     </div>
                     <CommentSection postId={postId}/>

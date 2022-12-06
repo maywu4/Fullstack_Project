@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { useEffect, useState } from "react";
 // import profileImg from '../ProfilePage/profilePic.png'
@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 const UserButton = ({ user }) => {
     const [showMenu, setShowMenu] = useState(false);
     const dispatch = useDispatch();
+    const currentUser = useSelector(state => state.session.user);
 
     const openMenu = () => {
         if (showMenu) return;
@@ -37,12 +38,12 @@ const UserButton = ({ user }) => {
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
 
-
+    
     return (
         <div className="profileOptions">
             <button onClick={openMenu} >
                 {/* style={{ backgroundImage: `url("${user.picture}")` }} */}
-                {/* <img src={user.picture} alt='' /> */}
+                <img src={currentUser ? currentUser.picture : null} alt="user-profile-pic" />
             </button>
             { showMenu && profileLinksList }
         </div>

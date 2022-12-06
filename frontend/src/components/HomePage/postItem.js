@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser, getUser } from "../../store/user";
+import { NavLink} from "react-router-dom";
 
 
 const PostItem = ({post}) => {
@@ -30,13 +31,15 @@ const PostItem = ({post}) => {
             </div>
             <div className="postPicture">
                 {/* <a href=""></a> */}
-                <a href={postShowLink}><img src={post.picture} alt=''/></a>
+                {/* <a href={postShowLink}><img src={post.picture} alt=''/></a> */}
+                <NavLink to={`/photos/${post.id}`}><img src={post.picture} alt='' /></NavLink>
             </div>
             <div className="postDetails">
                 
-                <a href={postShowLink}>
+                {/* <a href={postShowLink}>
                     <h6 >{post.title ? post.title : null }</h6>
-                </a>
+                </a> */}
+                <NavLink to={`/photos/${post.id}`}><h6 >{post.title ? post.title : null}</h6></NavLink>
                 
                 <div >{post.description ? post.description : null }</div>
             </div>

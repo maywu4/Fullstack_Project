@@ -10,31 +10,40 @@ import { createLike, deleteLike, fetchLikes, getLikes } from '../../store/likes'
 const LikeComponent = ({currentUser, postId}) => {
     const dispatch = useDispatch();
     const likes = useSelector(getLikes);
-    const like = likes.find(ele => ele.postId === parseInt(postId, 10) && ele.userId === currentUser.id)
-    // const [liked, setLiked] = useState(like ? true : false)
-
+    const [liked, setLiked] = useState(false)
+    
+    // console.log(liked)
     useEffect(() => {
         dispatch(fetchLikes());
     }, []);
+    
+    useEffect(() => {
+        
+        const like = likes.find(ele => ele.postId === parseInt(postId, 10) && ele.userId === currentUser.id)
+        setLiked(like ? true : false)
+
+    },[likes])
+
 
 
     const handleLike = (e) => {
-        if (!like) {
+        if (!liked) {
             dispatch(createLike({ postId: postId, userId: currentUser.id }))
-            // setLiked(true)
+            setLiked(true)
         }
     }
 
     const handleUnlike = (e) => {
+        const like = likes.find(ele => ele.postId === parseInt(postId, 10) && ele.userId === currentUser.id)
         dispatch(deleteLike(like.id));
-        // setLiked(false)
+        setLiked(false)
     }
 
     // console.log(like)
 
     return (
         <div className='postLikeComponent'>
-            {like ? 
+            {liked ? 
                 <FontAwesomeIcon icon={faStar} inverse onClick={handleUnlike}/> 
             : 
                 <FontAwesomeIcon icon={emptyStar} inverse onClick={handleLike} /> 

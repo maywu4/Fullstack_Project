@@ -40,7 +40,7 @@ export const createLike = (like) => async dispatch => {
         body: JSON.stringify(like)
     });
     const data = await res.json();
-    dispatch(receiveLike(data))
+    dispatch(receiveLike(data.like))
 }
 
 
@@ -53,6 +53,7 @@ const likesReducer = (state = {}, action) => {
     const nextState = { ...state }
     switch (action.type) {
         case RECEIVE_LIKES:
+            // let likes = Object.values(action.likes).map((like) => ({id: like.id, postId: like.post_id, userId: like.user_id}))
             return { ...state, ...action.likes }
         case RECEIVE_LIKE:
             const like = action.like
