@@ -3,7 +3,7 @@ import csrfFetch from "../../store/csrf";
 import { useSelector } from "react-redux";
 import './NewPostForm.css'
 
-const NewPostForm = () => {
+const NewPostForm = ({reload, setReload}) => {
     const currentUser = useSelector(state => state.session.user);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -45,6 +45,7 @@ const NewPostForm = () => {
             setPhotoUrl(null);
             fileRef.current.value = null;
         }
+        setReload(reload + 1);
     }
 
     const handleFile = (e) => {
