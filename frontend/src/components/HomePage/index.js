@@ -6,6 +6,7 @@ import Navigation from "../Navigation";
 import PostItem from "./postItem";
 import NewPostForm from "../NewPostForm";
 import './HomePage.css'
+import ExplorePosts from "./ExplorePosts";
 
 const HomePage = () => {
     const dispatch = useDispatch();
@@ -23,7 +24,6 @@ const HomePage = () => {
 
     const postItems = posts.map((post) => (<PostItem key={post.id} post={post} />)).reverse()
     
-    
     return (
         <div className="homePage">
             <Navigation/>
@@ -34,7 +34,13 @@ const HomePage = () => {
                     {/* {posts ? posts.map((post) => (<ul><li>{post}</li></ul>)) : null } */}
                     { postItems }
                 </ul>
-                <NewPostForm reload={reload} setReload={setReload}/>
+                <div id="homepageRight">
+                    <NewPostForm reload={reload} setReload={setReload}/>
+                    <div id='explorePosts'>
+                        <h6>Explore popular posts</h6>
+                        <ExplorePosts posts={posts} />
+                    </div>
+                </div>
             </div>
         </div>
     )
