@@ -37,6 +37,16 @@ const PostItem = ({post}) => {
         return false;
     }).length
 
+    const formatDate = (time) => {
+
+        return (
+            [time.getMonth() + 1,
+            time.getDate(),
+            time.getFullYear()
+            ].join('/')
+        )
+    }
+
     return (
         <div className="postItem">
             <div className='postPosterInfo'>
@@ -47,7 +57,7 @@ const PostItem = ({post}) => {
                     <NavLink to={posterProfileLink}>
                         <h4> {post.poster.username}</h4>
                     </NavLink>
-                    <h6>Created at {post.createdAt}</h6>
+                    <h6> Created on {formatDate(new Date(post.createdAt))}</h6>
                 </div>
 
             </div>

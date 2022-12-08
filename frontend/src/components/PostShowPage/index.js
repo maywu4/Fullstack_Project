@@ -123,6 +123,15 @@ const PostShowPage = () => {
         return false;
     }).length
 
+    const formatDate = (time) => {
+
+        return (
+        [time.getMonth()+1,
+        time.getDate(),
+        time.getFullYear()
+        ].join('/')
+        )
+    }
 
     return (
         <div className='postShow'>
@@ -176,7 +185,7 @@ const PostShowPage = () => {
                         </div>
                         
                         <div id='takenStats'>
-                            <span className='smallStats'>Created {post.createdAt}</span>
+                            <span className='smallStats'> Created {formatDate(new Date(post.createdAt))}</span>
                             <br />
                             <div id='copyright'>
                                 <img src={copyrightIcon} alt="" />
