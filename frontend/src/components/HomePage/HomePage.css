@@ -49,7 +49,7 @@
 
 .postPosterInfo h4,
 .postDetails h6 {
-    font-weight: 600;
+    font-weight: 1000;
     margin-bottom: 5px;
 }
 
@@ -58,11 +58,14 @@
     color: #9b9b9b;
 }
 
-.postDetails h6,
-.postDetails div {
-    font-size: 14px;
+.postDetails h6 {
+    font-size: 16px;
 }
 
+.postDetails>div {
+    font-size: 14px;
+    font-weight: 300;
+}
 .postPosterInfo img {
     margin-right: 10px;
 }

@@ -92,7 +92,18 @@ video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    font-family: Proxima Nova,
+    font-family: 'Figtree',
+        Proxima Nova,
+        helvetica neue,
+        helvetica,
+        arial,
+        sans-serif;
+}
+
+input, 
+button {
+    font-family: 'Figtree',
+        Proxima Nova,
         helvetica neue,
         helvetica,
         arial,
