@@ -90,10 +90,10 @@ video {
     padding: 0;
     border: 0;
     font-size: 100%;
-    font: inherit;
     vertical-align: baseline;
-    font-family: 'Figtree',
+    font-family:
         Proxima Nova,
+        'Figtree',
         helvetica neue,
         helvetica,
         arial,
@@ -102,8 +102,9 @@ video {
 
 input, 
 button {
-    font-family: 'Figtree',
+    font-family: 
         Proxima Nova,
+        'Figtree',
         helvetica neue,
         helvetica,
         arial,

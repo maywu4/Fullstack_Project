@@ -41,6 +41,16 @@ const ProfilePage = (props) => {
         dispatch(updateUser(user));
     }
 
+    const formatDate = (time) => {
+        const months = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"]
+        return (
+            [months[time.getMonth()],
+            time.getFullYear()
+            ].join(' ')
+        )
+    }
+
 
     const aboutSection = () => {
         return (
@@ -57,7 +67,7 @@ const ProfilePage = (props) => {
     const aboutSelection = (
         <div className="selections" id="aboutSelection">
             {(currentUser.id === user.id ? aboutSection() : user.about)}
-            <h4>Joined {user.createdAt}</h4>
+            <h4> Joined  {formatDate(new Date( user.createdAt ))}</h4>
             <h4>Email {user.email} </h4>
         </div>
     );
