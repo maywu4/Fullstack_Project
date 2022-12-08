@@ -38,12 +38,19 @@ const UserButton = ({ user }) => {
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
 
+    const styleButton = {
+        backgroundImage:`url("${currentUser.picture}")`,
+        width: '34px',
+        height: '34px',
+        backgroundSize: 'cover'
+    };
+
+    console.log(currentUser.picture)
     
     return (
         <div className="profileOptions">
-            <button onClick={openMenu} >
-                {/* style={{ backgroundImage: `url("${user.picture}")` }} */}
-                <img src={currentUser ? currentUser.picture : null} alt="user-profile-pic" />
+            <button onClick={openMenu} style={styleButton}>
+                {/* <img src={currentUser ? currentUser.picture : null} alt="user-profile-pic" /> */}
             </button>
             { showMenu && profileLinksList }
         </div>
