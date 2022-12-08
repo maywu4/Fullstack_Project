@@ -1,6 +1,8 @@
 import { useState, useRef } from "react";
 import csrfFetch from "../../store/csrf";
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSquarePlus } from '@fortawesome/free-regular-svg-icons'
 import './NewPostForm.css'
 
 const NewPostForm = ({reload, setReload}) => {
@@ -65,7 +67,11 @@ const NewPostForm = ({reload, setReload}) => {
     return (
         <div id="newPostForm">
             <form onSubmit={ handleSubmit }>
-                <h6>Create a new Post</h6>
+                <span className="formHeading">
+                    <FontAwesomeIcon icon={faSquarePlus}/>
+                    &nbsp; 
+                    <h6>Create a new post</h6>
+                </span>
                 <br />
                 <div>
                     <label> Add a Title

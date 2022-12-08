@@ -7,6 +7,8 @@ import PostItem from "./postItem";
 import NewPostForm from "../NewPostForm";
 import './HomePage.css'
 import ExplorePosts from "./ExplorePosts";
+import mgotbImg from './exploreMGotB.png';
+import wavesenseImg from './exploreWavesense.png';
 
 const HomePage = () => {
     const dispatch = useDispatch();
@@ -39,6 +41,24 @@ const HomePage = () => {
                     <div id='explorePosts'>
                         <h6>Explore popular posts</h6>
                         <ExplorePosts posts={posts} />
+                    </div>
+                    <div id='exploreMGotB'>
+                        <a href="https://maywu4.github.io/javascript_project/">
+                            <img src={mgotbImg} alt="" />
+                            <br />
+                            <h6>CLICK HERE to learn how much your money can grow</h6>
+                            <br />
+                            <span>Ad by Sponsor</span>
+                        </a>
+                    </div>
+                    <div id='exploreWavesense'>
+                        <a href="https://wavesense.onrender.com/">
+                            <img src={wavesenseImg} alt="" />
+                            <br />
+                            <h6> Wanna have fun with music? TRY FREE </h6>
+                            <br />
+                            <span>Ad by Sponsor</span>
+                        </a>
                     </div>
                 </div>
             </div>

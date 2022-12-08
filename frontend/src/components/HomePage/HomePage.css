@@ -88,7 +88,9 @@
     border-radius: 50%;
 }
 
-#explorePosts {
+#explorePosts,
+#exploreMGotB,
+#exploreWavesense {
     display: flex;
     flex-direction: column;
     border: 1px white solid;
@@ -149,6 +151,22 @@
 
 #explorePosts h6 {
     margin: 5px;
+}
+
+#exploreMGotB img,
+#exploreWavesense img {
+    width: 100%;
+    height: auto;
+}
+
+#exploreMGotB, 
+#exploreWavesense {
+    font-weight: 400;
+    font-size: 14px;
+}
+#exploreMGotB span,
+#exploreWavesense span {
+    font-size: 10px;
 }
 
 
