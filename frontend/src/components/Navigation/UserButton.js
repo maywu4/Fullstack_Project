@@ -45,7 +45,6 @@ const UserButton = ({ user }) => {
         backgroundSize: 'cover'
     };
 
-    console.log(currentUser.picture)
     
     return (
         <div className="profileOptions">

@@ -12,7 +12,7 @@ const LikeComponent = ({currentUser, postId}) => {
     const likes = useSelector(getLikes);
     const [liked, setLiked] = useState(false)
     
-    // console.log(liked)
+
     useEffect(() => {
         dispatch(fetchLikes());
     }, []);
@@ -39,7 +39,6 @@ const LikeComponent = ({currentUser, postId}) => {
         setLiked(false)
     }
 
-    // console.log(like)
 
     return (
         <div className='postLikeComponent'>

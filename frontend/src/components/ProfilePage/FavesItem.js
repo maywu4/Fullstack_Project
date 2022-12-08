@@ -13,8 +13,6 @@ const FavesItem = ({like}) => {
     
     const post = useSelector(getPost(like.post_id));
 
-    console.log(like)
-    console.log(post)
     return (
         <li>
             <NavLink to={`/photos/${like.post_id}`}>

@@ -15,8 +15,6 @@ const CommentItem = ({comment, postId}) => {
     const authorProfileLink = comment ? `/people/${comment.authorId}` : null
     const commentUser = useSelector(getUser(comment.authorId));
 
-    // console.log(commentUser?.picture)
-    // console.log(commentUser ? commentUser.picture : null)
 
     useEffect(() => {
         dispatch(fetchUser(comment.authorId))
