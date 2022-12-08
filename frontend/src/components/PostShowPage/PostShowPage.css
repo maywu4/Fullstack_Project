@@ -178,8 +178,19 @@
 }
 
 .postShowInfo {
+    display: flex;
     padding: 0px 0px 15px 0px ;
     border-bottom: 1px solid #cfd6d9;
+}
+.postShowInfo a {
+    align-self: center;
+}
+
+.postShowInfo img{
+    width: 45px;
+    height: 45px;
+    align-self: center;
+    margin-right: 10px;
 }
 
 

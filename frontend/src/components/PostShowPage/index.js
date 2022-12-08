@@ -135,19 +135,21 @@ const PostShowPage = () => {
             </div>
             <div id='postShowBottom'>
                 <div id='postShowLeft'>
+                    
                     <div className='postShowInfo'>
+                        <NavLink to={posterProfileLink}>
+                            <img className='posterProfilePic' src={post ? postPoster.picture : null} alt="user-profile-pic" />
+                        </NavLink>
                         <div className='postInfoTop'>
-                            <NavLink to={posterProfileLink}>
-                                <img className='commentorProfilePic' src={post ? postPoster.picture : null} alt="user-profile-pic" />
-                            </NavLink>
                             <NavLink to={posterProfileLink}>
                                 {post.poster.username}
                             </NavLink>
                             <h6> {post.title} </h6>
+                            <div className='postInfoBottom'>
+                                <p>{post.description}</p>
+                            </div>
                         </div>
-                        <div className='postInfoBottom'>
-                            <p>{ post.description }</p>
-                        </div>
+                        
                     </div>
                     <div id='likesSummary'> 
                         {numLikes !== 0 ? <FontAwesomeIcon icon={faStar} /> : <FontAwesomeIcon icon={emptyStar} />}
