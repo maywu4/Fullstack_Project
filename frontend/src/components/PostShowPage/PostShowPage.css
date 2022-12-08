@@ -63,6 +63,12 @@
     border-style: solid;
     border-width: 1px;
     border-radius: 5px;
+    font-size: 15px;
+}
+
+#postUpdate h6,
+#postDelete h6 {
+    font-weight: 500;
 }
 
 #postDelete {
@@ -85,7 +91,7 @@
     cursor: pointer;
     border-radius: 5px;
     color: white;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
 
 }

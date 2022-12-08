@@ -19,6 +19,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons'
+import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
 
 
 const PostShowPage = () => {
@@ -87,7 +88,7 @@ const PostShowPage = () => {
     const deletePostItem = () => {
         return (
             <div id='postDelete'>
-                <h6>Delete Post</h6>
+                <h6> <FontAwesomeIcon icon={faTrashCan} /> Delete Post</h6>
                 <br />
                 <button onClick={handleDelete}>Delete</button>
             </div>
