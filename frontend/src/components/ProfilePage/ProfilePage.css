@@ -10,15 +10,11 @@
     align-items: flex-end;
     color: white;
     padding: 30px 145px;
+    font-weight: 320;
 }
 
 .userCover h4 {
-    font-size: 36px;
-    font-family: Proxima Nova,
-        helvetica neue,
-        helvetica,
-        arial,
-        sans-serif;
+    font-size: 40px;
 }
 
 .userCover h4,
@@ -26,14 +22,6 @@
     padding-left: 1rem;
 }
 
-.userCover h6 {
-    font-size: 16px;
-    font-family: Proxima Nova,
-        helvetica neue,
-        helvetica,
-        arial,
-        sans-serif;
-}
 
 .userCover img,
 #settingsTitle img {
@@ -70,6 +58,7 @@
     padding: .75rem;
     border: darkgrey;
     border-style: solid;
+    border-width: 0.7px;
 }
 
 .selectionTabs {
@@ -111,8 +100,10 @@
     border-radius: 0;
 }
 
-.selectionTabs li:active {
+.selectionTabs li {
     color: black;
+    font-size: 16px;
+    font-weight: 320;
 }
 
 .menuSelection {
@@ -129,16 +120,17 @@
 
 .selections > ul {
     display: flex;
-    justify-content: space-around;
-    align-items: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
+    padding: 15px 25px;
 }
 
 
 .selections img {
     width: 30vw;
     height: 20vw;
-    padding: 2px;
+    padding: 5px;
+    border-radius: 15px;
 }
 
 #aboutSelection {
