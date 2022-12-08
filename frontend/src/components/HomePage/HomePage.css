@@ -64,10 +64,27 @@
 }
 
 .postPosterInfo img {
-    padding-right: 10px;
+    margin-right: 10px;
 }
 
 .postDetails {
+    display: flex;
+    justify-content: space-between;
+}
+
+.postDeets {
     flex-direction: column;
+}
+
+#postNums {
+    display: flex;
+    /* justify-content: space-around;
+    width: 30%; */
+}
+
+.posterProfilePic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
 }
 
