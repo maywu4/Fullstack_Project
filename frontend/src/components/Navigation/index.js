@@ -6,6 +6,7 @@ import githubIcon from './icons8-github-480.png'
 import linkedInIcon from './icons8-linkedin-512.png'
 import './Navigation.css'
 import ProfileMenu from "./ProfileMenu";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -23,8 +24,8 @@ const Navigation = ({user, setSelectTab}) => {
     const loggedOutLinks = (
         <>
             <ul>
-                <li id="logInButton"><a href="/login">Log In</a></li>
-                <li id="signUpButton"><a href="/sign-up">Sign Up</a></li>
+                <li id="logInButton"><NavLink to={"/login"}>Log In</NavLink></li>
+                <li id="signUpButton"><NavLink to={"/sign-up"}>Sign Up</NavLink></li>
                 <li>
                     <a href="https://github.com/maywu4">
                         <img id='githubLink' src={githubIcon} alt="github-logo" />
@@ -45,7 +46,7 @@ const Navigation = ({user, setSelectTab}) => {
         <div className="navBar">
             <div className="left">
                 <img src={ logoImg } alt="MomentCaptur logo" />
-                <h1><a href="/">momentCaptur</a></h1>
+                <h1><NavLink to="/">momentCaptur</NavLink></h1>
             </div>
             <div className="navMenu">
                 { currentUser ? loggedInLinks : loggedOutLinks}

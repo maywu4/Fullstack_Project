@@ -137,15 +137,12 @@ const PostShowPage = () => {
                 <div id='postShowLeft'>
                     <div className='postShowInfo'>
                         <div className='postInfoTop'>
-                            {/* <a href={posterProfileLink}>
-                                <img id='posterProfilePic' src={post.poster.picture} alt="" />
-                            </a> */}
-                            <a href={posterProfileLink}>
+                            <NavLink to={posterProfileLink}>
                                 <img className='commentorProfilePic' src={post ? postPoster.picture : null} alt="user-profile-pic" />
-                            </a>
-                            <a href={posterProfileLink}>
+                            </NavLink>
+                            <NavLink to={posterProfileLink}>
                                 {post.poster.username}
-                            </a>
+                            </NavLink>
                             <h6> {post.title} </h6>
                         </div>
                         <div className='postInfoBottom'>

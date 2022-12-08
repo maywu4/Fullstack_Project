@@ -1,6 +1,6 @@
 import Navigation from "../Navigation"
 import { useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 // import bostonImg from './boston.png'
 // import laPier from './laPier.png'
 // import sunset from './sunset.png'
@@ -38,7 +38,7 @@ const SplashPage = () => {
                 <br />
                 <br />
                 <br />
-                <a href="/sign-up"><button>Start for free</button></a>
+                <NavLink to={"/sign-up"}><button>Start for free</button></NavLink>
             </div>
             {/* <div className="background">
                 <img className="slidePics" src={ laPier } alt="Santa Monica Pier" />

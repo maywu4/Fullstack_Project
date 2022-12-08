@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import Navigation from "../Navigation";
 import logoImg from '../Navigation/logo.png';
 import './LoginForm.css'
@@ -69,7 +69,7 @@ const LoginFormPage = () => {
                 <br />
                 <br />
                 <div className="signUpLink">
-                    Not a MomentCaptur member? <a href="/sign-up">Sign up here.</a>
+                    Not a MomentCaptur member? <NavLink to={"/sign-up"}>Sign up here.</NavLink>
                 </div>
             </div>
         </div>

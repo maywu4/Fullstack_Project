@@ -19,26 +19,20 @@ const PostItem = ({post}) => {
         <div className="postItem">
             <div className='postPosterInfo'>
                 {/* {posterImg} */}
-                <a href={posterProfileLink}><img className='commentorProfilePic' src={postPoster ? postPoster.picture : null} alt="user-profile-pic" /></a>
+                <NavLink to={posterProfileLink}><img className='commentorProfilePic' src={postPoster ? postPoster.picture : null} alt="user-profile-pic" /></NavLink>
                 {/* {post.poster.picture === null ? <h6>Null</h6> : <h6>Not Null</h6> } */}
                 <div >
-                    <a href={posterProfileLink}>
+                    <NavLink to={posterProfileLink}>
                         <h4> {post.poster.username}</h4>
-                    </a>
+                    </NavLink>
                     <h6>Created at {post.createdAt}</h6>
                 </div>
 
             </div>
             <div className="postPicture">
-                {/* <a href=""></a> */}
-                {/* <a href={postShowLink}><img src={post.picture} alt=''/></a> */}
                 <NavLink to={`/photos/${post.id}`}><img src={post.picture} alt='' /></NavLink>
             </div>
             <div className="postDetails">
-                
-                {/* <a href={postShowLink}>
-                    <h6 >{post.title ? post.title : null }</h6>
-                </a> */}
                 <NavLink to={`/photos/${post.id}`}><h6 >{post.title ? post.title : null}</h6></NavLink>
                 
                 <div >{post.description ? post.description : null }</div>

@@ -4,6 +4,7 @@ import { updateComment, deleteComment } from '../../store/comments';
 import editIcon from './icons8-edit-24.png'
 import deleteIcon from './icons8-delete-trash-24.png'
 import { fetchUser, getUser } from '../../store/user';
+import { NavLink } from "react-router-dom";
 
 
 const CommentItem = ({comment, postId}) => {
@@ -57,11 +58,11 @@ const CommentItem = ({comment, postId}) => {
         return (
             <li>
                 <div id='commentOverview'>
-                    <a href={authorProfileLink}><img className='commentorProfilePic' src={commentUser ? commentUser.picture : null} alt="user-profile-pic" /></a>
+                    <NavLink to={authorProfileLink}><img className='commentorProfilePic' src={commentUser ? commentUser.picture : null} alt="user-profile-pic" /></NavLink>
                     <div id='commentBody'>
-                        <a href={authorProfileLink}>
+                        <NavLink to={authorProfileLink}>
                             {comment.author.username}
-                        </a>
+                        </NavLink>
                         <div> {editComment ? editBodyForm() : comment.body} </div>
                     </div>
                         {/* {hover && changeComment(comment)} */}

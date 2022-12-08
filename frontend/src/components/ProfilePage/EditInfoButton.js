@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 // import { useSelector } from "react-redux";
 // import SettingsPage from "../SettingsPage";
+import { NavLink } from "react-router-dom";
+
 
 const EditInfoButton = ({user}) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -14,9 +16,9 @@ const EditInfoButton = ({user}) => {
 
     const editsList = (
         <ul className="profile-dropdown" id="profileLinksList">
-            <li><a href={settingsPath}><button>Change photos</button></a></li>
-            <li><a href={settingsPath}><button>Edit username</button></a></li>
-            <li><a href={settingsPath}><button>Edit real name</button></a></li>
+            <li><NavLink to={settingsPath}><button>Change photos</button></NavLink></li>
+            <li><NavLink to={settingsPath}><button>Edit username</button></NavLink></li>
+            <li><NavLink to={settingsPath}><button>Edit real name</button></NavLink></li>
         </ul>
     ); 
 
