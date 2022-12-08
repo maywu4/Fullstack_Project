@@ -30,14 +30,18 @@ const PostShowPage = () => {
     // const comments = useSelector(getPostComments(postId));
     const comments = useSelector(getComments);
     const likes = useSelector(getLikes);
+    const post = useSelector(getPost(postId));
     
     useEffect(() => {
         dispatch(fetchPost(postId));
-        dispatch(fetchUser(post.posterId));
     }, []);
     
-    const post = useSelector(getPost(postId));
-    const postPoster = useSelector(getUser(post.posterId))
+    useEffect(() => {
+        dispatch(fetchUser(post?.posterId))
+    }, [])
+
+    const postPoster = useSelector(getUser(post?.posterId))
+
     const [title, setTitle] = useState( post ? post.title : '' );
     const [description, setDescription] = useState(post ? post.description : '');
     const posterProfileLink = post ? `/people/${post.posterId}` : null
@@ -148,7 +152,7 @@ const PostShowPage = () => {
                     
                     <div className='postShowInfo'>
                         <NavLink to={posterProfileLink}>
-                            <img className='posterProfilePic' src={post ? postPoster.picture : null} alt="user-profile-pic" />
+                            <img className='posterProfilePic' src={postPoster ? postPoster.picture : null} alt="user-profile-pic" />
                         </NavLink>
                         <div className='postInfoTop'>
                             <NavLink to={posterProfileLink}>
