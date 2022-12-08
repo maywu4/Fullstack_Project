@@ -14,7 +14,7 @@ import { getComments } from '../../store/comments';
 import CommentSection from '../CommentSection';
 import { fetchUser, getUser } from '../../store/user';
 import LikeComponent from '../LikeComponent';
-import { fetchLikes, getLikes } from '../../store/likes';
+import { getLikes } from '../../store/likes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-solid-svg-icons'

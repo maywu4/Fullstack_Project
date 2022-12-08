@@ -15,7 +15,7 @@ const PostItem = ({post}) => {
     // const postPoster = useSelector(getUser(post.posterId))
     const dispatch = useDispatch();
     const posterProfileLink = post ? `/people/${post.posterId}` : null
-    const postShowLink = `/photos/${post.id}`
+    // const postShowLink = `/photos/${post.id}`
     const postPoster = useSelector(getUser(post.posterId));
     const likes = useSelector(getLikes);
     const comments = useSelector(getComments);

@@ -65,6 +65,8 @@ const ProfilePage = (props) => {
     const photostreamItems = posts.map((post) => {
         if (post.posterId === user.id) {
             return (<li key={post.id}><NavLink to={`/photos/${post.id}`}><img src={post.picture} alt="" /></NavLink></li>)
+        } else {
+            return null
         }
     });
 
